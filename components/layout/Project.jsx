@@ -28,13 +28,14 @@ export default function Project({
         className="
       flex 
       flex-row 
+      justify-between
       pt-6
       "
       >
         <div
           className="
         w-full 
-        h-fit 
+        h-fit
         mt-3
         "
         >
@@ -55,8 +56,8 @@ export default function Project({
         </div>
         <div
           className="
-        w-full 
-        h-min 
+        w-full
+        max-h-min
         overflow-auto 
         scrollbar-hide
         "
@@ -92,7 +93,7 @@ export default function Project({
         bg-neutralBlack
         "
         >
-          {mainImage}
+          <img src={mainImage} />
         </div>
         <div
           className="
