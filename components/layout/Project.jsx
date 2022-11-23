@@ -1,6 +1,7 @@
 import { Disclosure } from "@headlessui/react";
 import ShowDescriptionButton from "../ui/DescriptionButton";
 import Image from "next/image";
+import { useImageProps } from "../../lib/next-sanity-image";
 
 export default function Project({
   _id /* string */,
@@ -14,6 +15,9 @@ export default function Project({
   description /* OBJECT */,
   credits /* OBJECT */,
 }) {
+  // Get the image props from the image object
+  const imageProps = useImageProps(mainImage);
+
   if (!Project) return <div />;
   return (
     <div
@@ -29,7 +33,6 @@ export default function Project({
         className="
       flex 
       flex-row 
-      justify-between
       pt-6
       "
       >
@@ -92,10 +95,10 @@ export default function Project({
            bg-neutralBlack
            dark:bg-neutralWhite
            "
-          src={mainImage.src}
-          loader={mainImage.loader}
-          width={mainImage.width}
-          height={mainImage.height}
+          src={imageProps.src}
+          loader={imageProps.loader}
+          width={imageProps.width}
+          height={imageProps.height}
           alt="mainImage"
           priority="true"
         />

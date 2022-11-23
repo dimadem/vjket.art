@@ -6,7 +6,7 @@ import { data } from "autoprefixer";
 import Sidebar from "../../components/layout/Sidebar";
 import InfoBar from "../../components/layout/InfoBar";
 import CenterFrame from "../../components/layout/CenterFrame";
-import { imageProps } from "../../lib/next-sanity-image";
+import { useImageProps } from "../../lib/next-sanity-image";
 
 export default function ProjectsPage({ projects }) {
   return (
@@ -27,14 +27,12 @@ export default function ProjectsPage({ projects }) {
               description /* OBJECT */,
               credits /* OBJECT */,
             }) => {
-              const mainImageProps = imageProps(mainImage);
-
               return (
                 <Project
                   key={_id}
                   title={title}
                   slug={slug}
-                  mainImage={mainImageProps}
+                  mainImage={mainImage}
                   disciplines={disciplines[0].title}
                   date={date}
                   location={location}
