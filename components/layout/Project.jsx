@@ -42,10 +42,12 @@ export default function Project({
             className="
           h-min 
           w-fit 
+          px-4
           border 
           text-xs 
           font-light 
           bg-neutralWhite
+          dark:bg-neutralBlack
           "
           >
             {disciplines}
