@@ -6,10 +6,9 @@ import { data } from "autoprefixer";
 import Sidebar from "../../components/layout/Sidebar";
 import InfoBar from "../../components/layout/InfoBar";
 import CenterFrame from "../../components/layout/CenterFrame";
+import { imageProps } from "../../lib/next-sanity-image";
 
 export default function ProjectsPage({ projects }) {
-  console.log("ProjectsPage: ", projects);
-
   return (
     <>
       <Sidebar />
@@ -28,12 +27,14 @@ export default function ProjectsPage({ projects }) {
               description /* OBJECT */,
               credits /* OBJECT */,
             }) => {
+              const mainImageProps = imageProps(mainImage);
+
               return (
                 <Project
                   key={_id}
                   title={title}
                   slug={slug}
-                  mainImage={mainImage}
+                  mainImage={mainImageProps}
                   disciplines={disciplines[0].title}
                   date={date}
                   location={location}
@@ -56,7 +57,7 @@ export async function getStaticProps() {
     _id,
     title,
     "slug": slug.current,
-    mainImage,
+    "mainImage": mainImage.asset->{...,metadata},
     "disciplines": disciplines[]->{title},
     date,
     location,
@@ -65,7 +66,7 @@ export async function getStaticProps() {
     credits[]
   }`;
 
-  const projects = await client().fetch(disciplineQuery);
+  const projects = await client.fetch(disciplineQuery);
   console.log("GetServerSideProps: ", projects);
 
   // const dataSample = [

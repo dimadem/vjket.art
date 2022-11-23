@@ -1,5 +1,6 @@
 import { Disclosure } from "@headlessui/react";
 import ShowDescriptionButton from "../ui/DescriptionButton";
+import Image from "next/image";
 
 export default function Project({
   _id /* string */,
@@ -82,19 +83,23 @@ export default function Project({
       mb-4
       "
       >
-        <div
+        <Image
           className="
-        w-full 
-        flex 
-        flex-row 
-        h-52 
-        left-0 
-        aspect-video 
-        bg-neutralBlack
-        "
-        >
-          <img src={mainImage} />
-        </div>
+           w-fit 
+           h-52 
+           left-0 
+           aspect-video 
+           bg-neutralBlack
+           dark:bg-neutralWhite
+           "
+          src={mainImage.src}
+          loader={mainImage.loader}
+          width={mainImage.width}
+          height={mainImage.height}
+          alt="mainImage"
+          priority="true"
+        />
+
         <div
           className="
         flex
