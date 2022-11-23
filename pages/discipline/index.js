@@ -14,7 +14,7 @@ export default function ProjectsPage({ projects }) {
     <>
       <Sidebar />
       <CenterFrame>
-        <div className="flex flex-col h-fit w-full mb-2 divide-y divide-dashed divide-black">
+        <div className="flex flex-col h-fit w-full mb-2 divide-y divide-dashed divide-black dark:divide-neutralWhite">
           {projects?.map(
             ({
               _id /* string */,
@@ -33,7 +33,7 @@ export default function ProjectsPage({ projects }) {
                   key={_id}
                   title={title}
                   slug={slug}
-                  // mainImage={mainImage}
+                  mainImage={mainImage}
                   disciplines={disciplines[0].title}
                   date={date}
                   location={location}
