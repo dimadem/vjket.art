@@ -2,6 +2,8 @@ import { Disclosure } from "@headlessui/react";
 import ShowDescriptionButton from "../ui/DescriptionButton";
 import Image from "next/image";
 import { useImageProps } from "../../lib/next-sanity-image";
+import { PortableText } from "@portabletext/react";
+import Vimeo from "@u-wave/react-vimeo";
 
 export default function Project({
   _id /* string */,
@@ -15,8 +17,57 @@ export default function Project({
   description /* OBJECT */,
   credits /* OBJECT */,
 }) {
+  // imageData
+  const imageData = description.filter(function (images) {
+    if (images._type === "image") {
+      return true;
+    }
+  });
+
+  const imageProps = useImageProps(imageData[0]);
+  // console.log("ImageProps:", imageProps);
+
+  const imageComponent = () => {
+    return (
+      <Image
+        {...imageProps}
+        className="object-cover w-full h-full"
+        alt="Project Image"
+        layout="responsive"
+        sizes="(max-width: 800px) 100vw, 800px"
+        priority="true"
+      />
+    );
+  };
+
+  // vimeoProps
+  const vimeoProps = description.filter(function (vimeo) {
+    if (vimeo._type === "vimeo") {
+      return true;
+    }
+  });
+
+  const vimeoComponent = (vimeoProps) => {
+    return (
+      <Vimeo
+        className="w-full"
+        id={vimeoProps.value._key}
+        video={vimeoProps.value.url}
+      />
+    );
+  };
+
+  const components = {
+    types: {
+      image: imageComponent,
+      vimeo: vimeoComponent,
+      // Any other custom types you have in your content
+      // Examples: mapLocation, contactForm, code, featuredProjects, latestNews, etc.
+    },
+  };
+
   // Get the image props from the image object
-  const imageProps = useImageProps(mainImage);
+  const mainImageProps = useImageProps(mainImage);
 
   if (!Project) return <div />;
   return (
@@ -95,11 +146,10 @@ export default function Project({
            bg-neutralBlack
            dark:bg-neutralWhite
            "
-          src={imageProps.src}
-          loader={imageProps.loader}
-          width={imageProps.width}
-          height={imageProps.height}
-          alt="mainImage"
+          {...mainImageProps}
+          layout="responsive"
+          sizes="(max-width: 500px) 100vw, 300px"
+          alt="Project mainImage"
           priority="true"
         />
 
@@ -187,20 +237,22 @@ export default function Project({
             mx-3
             "
           >
-            <p
+            <PortableText
               className="
               text-justify 
               w-fit
               "
-            ></p>
-            <p
+              value={description}
+              components={components}
+            />
+
+            <PortableText
               className="
               text-left 
               w-full
               "
-            >
-              {credits}
-            </p>
+              value={credits}
+            />
           </div>
         </Disclosure.Panel>
       </Disclosure>
