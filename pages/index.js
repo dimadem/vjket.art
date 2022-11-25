@@ -1,4 +1,3 @@
-import Sidebar from "../components/layout/Sidebar";
 import PolyMenu from "../components/layout/PolyMenu";
 import { withLayoutMain } from "../components/layout/LayoutMain";
 import { client } from "../lib/sanity.server";
