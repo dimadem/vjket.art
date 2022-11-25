@@ -5,8 +5,8 @@ import { client } from "../lib/sanity.server";
 import { groq } from "next-sanity";
 
 function Home({ disciplines, years }) {
-  console.log("disciplines:", disciplines);
-  console.log("years:", years);
+  // console.log("disciplines:", disciplines);
+  // console.log("years:", years);
 
   return (
     <>
