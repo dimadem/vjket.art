@@ -23,9 +23,10 @@ export default function Project({
       return true;
     }
   });
+  console.log("IMAGEDATA:", imageData);
 
   const imageProps = useImageProps(imageData[0]);
-  // console.log("ImageProps:", imageProps);
+  console.log("ImageProps:", imageProps);
 
   const imageComponent = () => {
     return (

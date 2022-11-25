@@ -4,8 +4,12 @@ import Link from "next/link";
 import { disciplines, years } from "../../public/data";
 import { BsVimeo, BsFacebook } from "react-icons/bs";
 import { ImSoundcloud } from "react-icons/im";
+import { useContext } from "react";
+import { MenuContext } from "../../context/menu.context";
 
 export default function MainMenu() {
+  const disciplines = useContext(MenuContext);
+  console.log("MAINMENU:", disciplines);
   return (
     <Menu>
       <Menu.Button className="sidebar-icon group">
@@ -49,7 +53,7 @@ export default function MainMenu() {
             <Link href="/aboutme">about me</Link>
           </Menu.Item>
           {/* menu */}
-          {disciplines.map(({ label, href }) => (
+          {/* {disciplines.map(({ label, href }) => (
             <Menu.Item
               key={label}
               className="
@@ -66,11 +70,11 @@ export default function MainMenu() {
             >
               <Link href={href}>{label}</Link>
             </Menu.Item>
-          ))}
+          ))} */}
           {/* years */}
           <div className="relative pl-5 pr-8 flex flex-nowrap mt-8">
             <div className="flex overflow-y-auto scrollbar-hide">
-              {years.map((year) => (
+              {/* {years.map((year) => (
                 <Menu.Item
                   key={year.label}
                   className="
@@ -94,7 +98,7 @@ export default function MainMenu() {
                     {year.label}
                   </Link>
                 </Menu.Item>
-              ))}
+              ))} */}
             </div>
           </div>
           {/* socials */}
