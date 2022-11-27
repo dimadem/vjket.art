@@ -1,15 +1,15 @@
 import { Menu } from "@headlessui/react";
 import { BsList } from "react-icons/bs";
 import Link from "next/link";
-import { disciplines, years } from "../../public/data";
 import { BsVimeo, BsFacebook } from "react-icons/bs";
 import { ImSoundcloud } from "react-icons/im";
 import { useContext } from "react";
 import { MenuContext } from "../../context/menu.context";
 
 export default function MainMenu() {
-  const disciplines = useContext(MenuContext);
-  console.log("MAINMENU:", disciplines);
+  const { disciplines, years } = useContext(MenuContext);
+  console.log("MAINMENU:", disciplines, years);
+
   return (
     <Menu>
       <Menu.Button className="sidebar-icon group">
@@ -53,9 +53,9 @@ export default function MainMenu() {
             <Link href="/aboutme">about me</Link>
           </Menu.Item>
           {/* menu */}
-          {/* {disciplines.map(({ label, href }) => (
+          {disciplines.map(({ slug, title, _id }) => (
             <Menu.Item
-              key={label}
+              key={_id}
               className="
             text-xl
             cursor-default 
@@ -68,15 +68,22 @@ export default function MainMenu() {
             ui-active:dark:bg-black 
             ui-active:dark:text-neutralWhite"
             >
-              <Link href={href}>{label}</Link>
+              <Link
+                href={{
+                  pathname: `/discipline/${slug}`,
+                  query: { slug: slug },
+                }}
+              >
+                {title}
+              </Link>
             </Menu.Item>
-          ))} */}
+          ))}
           {/* years */}
           <div className="relative pl-5 pr-8 flex flex-nowrap mt-8">
             <div className="flex overflow-y-auto scrollbar-hide">
-              {/* {years.map((year) => (
+              {years.map(({ slug, title, _id }) => (
                 <Menu.Item
-                  key={year.label}
+                  key={_id}
                   className="
                   text-lg
                 cursor-default 
@@ -91,14 +98,14 @@ export default function MainMenu() {
                 >
                   <Link
                     href={{
-                      pathname: "/year/[slug]",
-                      query: { slug: year.slug },
+                      pathname: `/year/${slug}`,
+                      query: { slug: slug },
                     }}
                   >
-                    {year.label}
+                    {title}
                   </Link>
                 </Menu.Item>
-              ))} */}
+              ))}
             </div>
           </div>
           {/* socials */}
