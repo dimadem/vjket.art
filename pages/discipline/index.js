@@ -44,9 +44,6 @@ function ProjectsPage({ projects }) {
 export default withLayoutProject(ProjectsPage);
 
 export async function getStaticProps() {
-  const discipline = "vj";
-  // console.log(discipline);
-
   const allProjectsQuery = groq`*[_type == "project"] | order(year asc){
     _id,
     title,
@@ -79,7 +76,7 @@ export async function getStaticProps() {
 
   const data = await client.fetch(disciplineQuery);
   const projects = await data[0].projects;
-  console.log("GetServerSideProps: ", projects);
+  // console.log("GetServerSideProps: ", projects);
 
   return {
     props: { projects },

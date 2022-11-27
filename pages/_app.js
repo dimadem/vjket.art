@@ -1,11 +1,3 @@
-// import "../styles/globals.css";
-
-// function MyApp({ Component, pageProps }) {
-//   return <Component {...pageProps} />;
-// }
-
-// export default MyApp;
-
 import Head from "next/head";
 import { ThemeProvider } from "next-themes";
 import { Red_Hat_Mono } from "@next/font/google";
