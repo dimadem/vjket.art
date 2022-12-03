@@ -3,10 +3,7 @@ import { withLayoutMain } from "../components/layout/LayoutMain";
 import { client } from "../lib/sanity.server";
 import { groq } from "next-sanity";
 
-function Home({ disciplines, years }) {
-  console.log("disciplines:", disciplines);
-  console.log("years:", years);
-
+function Home() {
   return (
     <>
       <PolyMenu />
@@ -16,6 +13,7 @@ function Home({ disciplines, years }) {
 
 export default withLayoutMain(Home);
 
+//fetching data for MainMenu
 export async function getStaticProps() {
   const disciplines = await client.fetch(
     groq`*[_type == "discipline"] | order(asc){title, "slug": slug.current, _id}`

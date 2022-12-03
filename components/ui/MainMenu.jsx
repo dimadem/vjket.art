@@ -7,8 +7,13 @@ import { useContext } from "react";
 import { MenuContext } from "../../context/menu.context";
 
 export default function MainMenu() {
-  const { disciplines, years } = useContext(MenuContext);
-  console.log("MAINMENU:", disciplines, years);
+  const { menu, setMenu } = useContext(MenuContext);
+
+  // console.log("MainMenu menu: ", menu);
+  const { disciplines, years } = menu;
+  console.log("MainMenu disciplines:", disciplines, "MainMenu years:", years);
+
+  // const { disciplines, years } = useContext(MenuContext);
 
   return (
     <Menu>
@@ -53,10 +58,11 @@ export default function MainMenu() {
             <Link href="/aboutme">about me</Link>
           </Menu.Item>
           {/* menu */}
-          {disciplines.map(({ slug, title, _id }) => (
-            <Menu.Item
-              key={_id}
-              className="
+          {disciplines &&
+            disciplines.map(({ slug, title, _id }) => (
+              <Menu.Item
+                key={_id}
+                className="
             text-xl
             cursor-default 
             select-none 
@@ -67,24 +73,18 @@ export default function MainMenu() {
             ui-active:text-black 
             ui-active:dark:bg-black 
             ui-active:dark:text-neutralWhite"
-            >
-              <Link
-                href={{
-                  pathname: `/discipline/${slug}`,
-                  query: { slug: slug },
-                }}
               >
-                {title}
-              </Link>
-            </Menu.Item>
-          ))}
+                <Link href={`/discipline/${slug}`}>{title}</Link>
+              </Menu.Item>
+            ))}
           {/* years */}
           <div className="relative pl-5 pr-8 flex flex-nowrap mt-8">
             <div className="flex overflow-y-auto scrollbar-hide">
-              {years.map(({ slug, title, _id }) => (
-                <Menu.Item
-                  key={_id}
-                  className="
+              {years &&
+                years.map(({ slug, title, _id }) => (
+                  <Menu.Item
+                    key={_id}
+                    className="
                   text-lg
                 cursor-default 
                 select-none 
@@ -95,17 +95,10 @@ export default function MainMenu() {
                 ui-active:text-black 
                 ui-active:dark:bg-black 
                 ui-active:dark:text-neutralWhite"
-                >
-                  <Link
-                    href={{
-                      pathname: `/year/${slug}`,
-                      query: { slug: slug },
-                    }}
                   >
-                    {title}
-                  </Link>
-                </Menu.Item>
-              ))}
+                    <Link href={`/year/${slug}`}>{title}</Link>
+                  </Menu.Item>
+                ))}
             </div>
           </div>
           {/* socials */}
@@ -163,4 +156,21 @@ export default function MainMenu() {
       </Menu.Items>
     </Menu>
   );
+}
+
+//fetching data for MainMenu
+export async function getStaticProps() {
+  const disciplines = await client.fetch(
+    groq`*[_type == "discipline"] | order(asc){title, "slug": slug.current, _id}`
+  );
+  const years = await client.fetch(
+    groq`*[_type == "year"] | order(asc){title, "slug": slug.current, _id}`
+  );
+
+  return {
+    props: {
+      disciplines,
+      years,
+    },
+  };
 }
