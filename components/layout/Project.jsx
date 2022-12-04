@@ -17,7 +17,7 @@ export default function Project({
   description /* OBJECT */,
   credits /* OBJECT */,
 }) {
-  const imageComponent = (description) => {
+  const ImageComponent = (description) => {
     return (
       <Image
         {...useImageProps(description.value)}
@@ -28,7 +28,7 @@ export default function Project({
     );
   };
 
-  const vimeoComponent = (description) => {
+  const VimeoComponent = (description) => {
     return (
       <Vimeo
         className="w-full"
@@ -40,8 +40,8 @@ export default function Project({
 
   const components = {
     types: {
-      image: imageComponent,
-      vimeo: vimeoComponent,
+      image: ImageComponent,
+      vimeo: VimeoComponent,
       // Any other custom types you have in your content
       // Examples: mapLocation, contactForm, code, featuredProjects, latestNews, etc.
     },
