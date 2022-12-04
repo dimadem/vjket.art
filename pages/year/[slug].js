@@ -20,25 +20,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  // const disciplines = await client.fetch(
-  //   groq`*[_type == "discipline"] | order(asc){title, "slug": slug.current, _id}`
-  // );
-  // const years = await client.fetch(
-  //   groq`*[_type == "year"] | order(asc){title, "slug": slug.current, _id}`
-  // );
-  // const allProjectsQuery = groq`*[_type == "project"] | order(year asc){
-  //   _id,
-  //   title,
-  //   "slug": slug.current,
-  //   "mainImage": mainImage.asset->{...,metadata},
-  //   "disciplines": disciplines[]->{title},
-  //   date,
-  //   location,
-  //   "technologies": technologies[]->{title},
-  //   description,
-  //   credits
-  // }`;
-
   const disciplineQuery = groq`*[_type=="year" && slug.current == "${slug}"]{
     _id,
     title,
@@ -58,29 +39,11 @@ export async function getStaticProps({ params: { slug } }) {
 
   const data = await client.fetch(disciplineQuery);
   const projects = await data[0].projects;
-  // console.log("GetServerSideProps: ", projects);
 
   return {
     props: { projects },
   };
 }
-
-// //fetching data for MainMenu
-// export async function getStaticProps() {
-//   const disciplines = await client.fetch(
-//     groq`*[_type == "discipline"] | order(asc){title, "slug": slug.current, _id}`
-//   );
-//   const years = await client.fetch(
-//     groq`*[_type == "year"] | order(asc){title, "slug": slug.current, _id}`
-//   );
-
-//   return {
-//     props: {
-//       disciplines,
-//       years,
-//     },
-//   };
-// }
 
 function ProjectsPage({ projects }) {
   return (

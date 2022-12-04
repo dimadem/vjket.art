@@ -17,43 +17,23 @@ export default function Project({
   description /* OBJECT */,
   credits /* OBJECT */,
 }) {
-  // imageData
-  const imageData = description.filter(function (images) {
-    if (images._type === "image") {
-      return true;
-    }
-  });
-  console.log("IMAGEDATA:", imageData);
-
-  const imageProps = useImageProps(imageData[0]);
-  console.log("ImageProps:", imageProps);
-
-  const imageComponent = () => {
+  const imageComponent = (description) => {
+    const imageProps = useImageProps(description.value);
     return (
       <Image
         {...imageProps}
-        className="object-cover w-full h-full"
-        alt="Project Image"
         layout="responsive"
         sizes="(max-width: 800px) 100vw, 800px"
-        priority="true"
       />
     );
   };
 
-  // vimeoProps
-  const vimeoProps = description.filter(function (vimeo) {
-    if (vimeo._type === "vimeo") {
-      return true;
-    }
-  });
-
-  const vimeoComponent = (vimeoProps) => {
+  const vimeoComponent = (description) => {
     return (
       <Vimeo
         className="w-full"
-        id={vimeoProps.value._key}
-        video={vimeoProps.value.url}
+        id={description.value._key}
+        video={description.value.url}
       />
     );
   };

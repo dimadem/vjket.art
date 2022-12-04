@@ -8,12 +8,7 @@ import { MenuContext } from "../../context/menu.context";
 
 export default function MainMenu() {
   const { menu, setMenu } = useContext(MenuContext);
-
-  // console.log("MainMenu menu: ", menu);
   const { disciplines, years } = menu;
-  console.log("MainMenu disciplines:", disciplines, "MainMenu years:", years);
-
-  // const { disciplines, years } = useContext(MenuContext);
 
   return (
     <Menu>
