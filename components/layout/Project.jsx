@@ -18,12 +18,12 @@ export default function Project({
   credits /* OBJECT */,
 }) {
   const imageComponent = (description) => {
-    const imageProps = useImageProps(description.value);
     return (
       <Image
-        {...imageProps}
+        {...useImageProps(description.value)}
         layout="responsive"
         sizes="(max-width: 800px) 100vw, 800px"
+        alt="Project Image"
       />
     );
   };
