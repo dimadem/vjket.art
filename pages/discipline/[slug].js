@@ -20,6 +20,14 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }) {
+  //MENU ITEMS
+  const disciplines = await client.fetch(
+    groq`*[_type == "discipline"] | order(asc){title, "slug": slug.current, _id}`
+  );
+  const years = await client.fetch(
+    groq`*[_type == "year"] | order(asc){title, "slug": slug.current, _id}`
+  );
+
   const disciplineQuery = groq`*[_type=="discipline" && slug.current == "${slug}"]{
     _id,
     title,
@@ -42,7 +50,7 @@ export async function getStaticProps({ params: { slug } }) {
   // console.log("GetServerSideProps: ", projects);
 
   return {
-    props: { projects },
+    props: { projects, disciplines, years },
   };
 }
 

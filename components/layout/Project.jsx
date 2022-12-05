@@ -19,19 +19,24 @@ export default function Project({
 }) {
   const ImageComponent = (description) => {
     return (
-      <Image
-        {...useImageProps(description.value)}
-        layout="responsive"
-        sizes="(max-width: 800px) 100vw, 800px"
-        alt="Project Image"
-      />
+      <div className="">
+        <Image
+          {...useImageProps(description.value)}
+          layout="responsive"
+          sizes="(max-width: 768px) 100vw,
+        (max-width: 1200px) 50vw,
+        33vw"
+          alt="Project Image"
+          className=""
+        />
+      </div>
     );
   };
 
   const VimeoComponent = (description) => {
     return (
       <Vimeo
-        className="w-full"
+        className="flex justify-center bg-black p-2 my-4"
         id={description.value._key}
         video={description.value.url}
       />
