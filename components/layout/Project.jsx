@@ -197,6 +197,7 @@ export default function Project({
             {gallery.map((image) => (
               <Image
                 {...useImageProps(image)}
+                key={image._key}
                 className="w-full object-contain"
               />
             ))}
