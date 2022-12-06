@@ -22,10 +22,7 @@ export default function Project({
     return (
       <Image
         {...useImageProps(description.value)}
-        layout="responsive"
-        sizes="(max-width: 768px) 100vw,
-        (max-width: 200px) 50vw,
-        33vw"
+        layout="fill"
         alt="Project Image"
         className="items-center w-full object-contain px-14 pb-10"
       />
@@ -52,6 +49,7 @@ export default function Project({
   };
 
   const imageProps = useImageProps(mainImage);
+  console.log(imageProps);
   // const images = gallery.map((image) => {
   //   return image;
   // });
@@ -61,13 +59,12 @@ export default function Project({
   return (
     <div
       key={_id}
-      className="flex flex-col justify-start mx-3 font-redhatmono w-full h-fit"
+      className="flex flex-col justify-start mx-3 font-redhatmono min-w-full h-fit"
     >
       <div className="flex flex-row space-x-2 h-min pb-5">
         <div className="w-1/2">
           <span
             className="
-          h-min 
           px-4
           border 
           text-xs 
@@ -101,7 +98,7 @@ export default function Project({
       </div>
 
       <div className="flex flex-row space-x-2  items-center">
-        <div className="w-1/2 relative">
+        <div className="w-1/2 h-min">
           <Image
             className="
             rounded-sm
@@ -110,9 +107,8 @@ export default function Project({
            "
             {...imageProps}
             layout="responsive"
-            sizes="(max-width: 100px) 100vw, 200px"
-            alt="Project mainImage"
-            priority="true"
+            alt={"mainImage"}
+            priority
           />
         </div>
         <ul className="w-1/2 flex flex-col justify-between">
