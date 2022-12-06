@@ -41,13 +41,14 @@ export async function getStaticProps({ params: { slug } }) {
       location,
       "technologies": technologies[]->{title},
       description,
-      credits
+      credits,
+      gallery
     }
   } `;
 
   const data = await client.fetch(disciplineQuery);
   const projects = await data[0].projects;
-  // console.log("GetServerSideProps: ", projects);
+  console.log("GetServerSideProps: ", projects);
 
   return {
     props: { projects, disciplines, years },
@@ -71,6 +72,7 @@ function ProjectsPage({ projects }) {
               technologies /* OBJECT */,
               description /* OBJECT */,
               credits /* OBJECT */,
+              gallery /* GALLERY IMAGES */,
             }) => {
               return (
                 <Project
@@ -84,6 +86,7 @@ function ProjectsPage({ projects }) {
                   technologies={technologies[0].title}
                   description={description}
                   credits={credits}
+                  gallery={gallery}
                 />
               );
             }

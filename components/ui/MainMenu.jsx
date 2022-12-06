@@ -74,7 +74,7 @@ export default function MainMenu() {
             ))}
           {/* years */}
           <div className="relative pl-5 pr-8 flex flex-nowrap mt-8">
-            <div className="flex overflow-y-auto scrollbar-hide">
+            <div className="flex overflow-y-auto scrollbar-hide overscroll-contain">
               {years &&
                 years.map(({ slug, title, _id }) => (
                   <Menu.Item

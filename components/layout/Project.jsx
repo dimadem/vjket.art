@@ -16,27 +16,26 @@ export default function Project({
   technologies /* OBJECT */,
   description /* OBJECT */,
   credits /* OBJECT */,
+  gallery /* CAROUSEL IMAGES */,
 }) {
   const ImageComponent = (description) => {
     return (
-      <div className="">
-        <Image
-          {...useImageProps(description.value)}
-          layout="responsive"
-          sizes="(max-width: 768px) 100vw,
-        (max-width: 1200px) 50vw,
+      <Image
+        {...useImageProps(description.value)}
+        layout="responsive"
+        sizes="(max-width: 768px) 100vw,
+        (max-width: 200px) 50vw,
         33vw"
-          alt="Project Image"
-          className=""
-        />
-      </div>
+        alt="Project Image"
+        className="items-center w-full object-contain px-14 pb-10"
+      />
     );
   };
 
   const VimeoComponent = (description) => {
     return (
       <Vimeo
-        className="flex justify-center bg-black p-2 my-4"
+        className="flex justify-center p-2 my-4"
         id={description.value._key}
         video={description.value.url}
       />
@@ -52,38 +51,19 @@ export default function Project({
     },
   };
 
-  // Get the image props from the image object
-  const mainImageProps = useImageProps(mainImage);
+  console.log("GALLERY", gallery);
 
   if (!Project) return <div />;
   return (
     <div
       key={_id}
-      className="
-    flex 
-    flex-col 
-    mx-3 
-    font-redhatmono
-    "
+      className="flex flex-col justify-start mx-3 font-redhatmono w-full h-fit"
     >
-      <div
-        className="
-      flex 
-      flex-row 
-      pt-6
-      "
-      >
-        <div
-          className="
-        w-full 
-        h-fit
-        mt-3
-        "
-        >
-          <button
+      <div className="flex flex-row space-x-2 h-min pb-5">
+        <div className="w-1/2">
+          <span
             className="
           h-min 
-          w-fit 
           px-4
           border 
           text-xs 
@@ -93,123 +73,103 @@ export default function Project({
           "
           >
             {disciplines}
-          </button>
+          </span>
         </div>
+
         <div
           className="
-        w-full
-        max-h-min
-        overflow-auto 
-        scrollbar-hide
-        "
+          w-1/2
+          overflow-x-auto
+          scrollbar-hide
+          overscroll-contain
+          "
         >
-          <p
+          <span
             className="
           font-normal 
-          text-3xl 
-          mb-5 
-          h-min
+          text-3xl
+          truncate
           "
           >
             {title}
-          </p>
+          </span>
         </div>
       </div>
-      <div
-        className="
-      flex 
-      flex-row
-      gap-3 
-      mb-4
-      "
-      >
-        <Image
-          className="
-           w-fit 
-           h-52 
-           left-0 
-           aspect-video 
+
+      <div className="flex flex-row space-x-2  items-center">
+        <div className="w-1/2 relative">
+          <Image
+            className="
+            rounded-sm
            bg-neutralBlack
            dark:bg-neutralWhite
            "
-          {...mainImageProps}
-          layout="responsive"
-          sizes="(max-width: 500px) 100vw, 300px"
-          alt="Project mainImage"
-          priority="true"
-        />
-
-        <div
-          className="
-        flex
-        w-full
-        "
-        >
-          <ul
-            className="
-          flex 
-          flex-col 
-          justify-between
-          "
-          >
-            <li
-              className="
-            font-medium 
-            text-lg 
-            tracking-widest
-            "
-            >
-              location
-            </li>
-
-            <li
-              className="
-            font-light 
-            text-lg
-            "
-            >
-              {location}
-            </li>
-
-            <li
-              className="
-            font-medium 
-            text-lg 
-            tracking-widest
-            "
-            >
-              year
-            </li>
-
-            <li
-              className="
-            font-light 
-            text-lg
-            "
-            >
-              {date}
-            </li>
-
-            <li
-              className="
-            font-medium 
-            text-lg 
-            tracking-widest
-            "
-            >
-              technologies
-            </li>
-            <li
-              className="
-            font-light 
-            text-lg
-            "
-            >
-              {technologies}
-            </li>
-          </ul>
+            {...useImageProps(mainImage)}
+            layout="responsive"
+            sizes="(max-width: 100px) 100vw, 200px"
+            alt="Project mainImage"
+            priority="true"
+          />
         </div>
+        <ul className="w-1/2 flex flex-col justify-between">
+          <li
+            className="
+            font-medium 
+            text-lg 
+            tracking-widest
+            "
+          >
+            location
+          </li>
+
+          <li
+            className="
+            font-light 
+            text-lg
+            "
+          >
+            {location}
+          </li>
+
+          <li
+            className="
+            font-medium 
+            text-lg 
+            tracking-widest
+            "
+          >
+            year
+          </li>
+
+          <li
+            className="
+            font-light 
+            text-lg
+            "
+          >
+            {date}
+          </li>
+
+          <li
+            className="
+            font-medium 
+            text-lg 
+            tracking-widest
+            "
+          >
+            technologies
+          </li>
+          <li
+            className="
+            font-light 
+            text-lg
+            "
+          >
+            {technologies}
+          </li>
+        </ul>
       </div>
+
       <Disclosure>
         <ShowDescriptionButton />
         <Disclosure.Panel
@@ -217,28 +177,29 @@ export default function Project({
           mb-4
           "
         >
-          <div
+          <PortableText
             className="
-            mt-1 
-            mx-3
-            "
-          >
-            <PortableText
-              className="
               text-justify 
               w-fit
               "
-              value={description}
-              components={components}
-            />
+            value={description}
+            components={components}
+          />
 
-            <PortableText
-              className="
+          <PortableText
+            className="
               text-left 
               w-full
               "
-              value={credits}
-            />
+            value={credits}
+          />
+          <div className="overflow-x-auto">
+            {gallery.map((image) => (
+              <Image
+                {...useImageProps(image)}
+                className="w-full object-contain"
+              />
+            ))}
           </div>
         </Disclosure.Panel>
       </Disclosure>
