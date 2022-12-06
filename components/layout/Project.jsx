@@ -20,19 +20,20 @@ export default function Project({
 }) {
   const ImageComponent = (description) => {
     return (
-      <Image
-        {...useImageProps(description.value)}
-        layout="fill"
-        alt="Project Image"
-        className="items-center w-full object-contain px-14 pb-10"
-      />
+      <div className="flex justify-center my-4">
+        <Image
+          {...useImageProps(description.value)}
+          style={{ width: "100%", height: "auto" }}
+          alt="Project Image"
+        />
+      </div>
     );
   };
 
   const VimeoComponent = (description) => {
     return (
       <Vimeo
-        className="flex justify-center p-2 my-4"
+        className="flex justify-center p-2 my-2"
         id={description.value._key}
         video={description.value.url}
       />
@@ -96,7 +97,7 @@ export default function Project({
         </div>
       </div>
 
-      <div className="flex flex-row justify-center items-stretch h-auto space-x-2">
+      <div className="flex flex-row justify-center items-stretch h-auto space-x-2 w-fit">
         <div className="w-1/2">
           <Image
             className="

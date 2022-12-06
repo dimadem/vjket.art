@@ -4,9 +4,10 @@ import InfoBar from "./InfoBar";
 const Layout = ({ children }) => {
   return (
     <>
-      <Sidebar />
-      {children}
-      <InfoBar />
+      <div className="flex flex-row">
+        <Sidebar />
+        {children}
+      </div>
     </>
   );
 };
