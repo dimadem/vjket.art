@@ -60,7 +60,7 @@ export default function Project({
       key={_id}
       className="flex flex-col justify-start mx-3 font-redhatmono h-fit"
     >
-      <div className="flex flex-row space-x-2 h-min pb-5">
+      <div className="flex flex-row items-center pb-5 space-x-2">
         <div className="w-1/2">
           <span
             className="
@@ -96,7 +96,7 @@ export default function Project({
         </div>
       </div>
 
-      <div className="flex flex-row space-x-2  items-center">
+      <div className="flex flex-row justify-center items-stretch h-auto space-x-2">
         <div className="w-1/2">
           <Image
             className="
@@ -106,7 +106,7 @@ export default function Project({
            "
             {...imageProps}
             alt={"mainImage"}
-            style={{ width: "100%", height: "100%" }}
+            style={{ width: "50%", height: "auto" }}
             priority
           />
         </div>
