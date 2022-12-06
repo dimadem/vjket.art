@@ -48,7 +48,6 @@ export async function getStaticProps({ params: { slug } }) {
 
   const data = await client.fetch(disciplineQuery);
   const projects = await data[0].projects;
-  console.log("GetServerSideProps: ", projects);
 
   return {
     props: { projects, disciplines, years },

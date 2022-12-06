@@ -51,6 +51,7 @@ export default function Project({
     },
   };
 
+  const imageProps = useImageProps(mainImage);
   // const images = gallery.map((image) => {
   //   return image;
   // });
@@ -107,7 +108,7 @@ export default function Project({
            bg-neutralBlack
            dark:bg-neutralWhite
            "
-            {...useImageProps(mainImage)}
+            {...imageProps}
             layout="responsive"
             sizes="(max-width: 100px) 100vw, 200px"
             alt="Project mainImage"
