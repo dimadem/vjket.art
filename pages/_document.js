@@ -5,8 +5,10 @@ export default function Document() {
     <Html lang="en">
       <Head />
       <body className="fixed top-0 w-screen h-screen bg-black">
-        <Main />
-        <NextScript />
+        <div className="flex flex-row justify-between">
+          <Main />
+          <NextScript />
+        </div>
       </body>
     </Html>
   );

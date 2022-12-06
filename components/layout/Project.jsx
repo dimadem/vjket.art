@@ -51,7 +51,10 @@ export default function Project({
     },
   };
 
-  console.log("GALLERY", gallery);
+  // const images = gallery.map((image) => {
+  //   return image;
+  // });
+  // console.log(images);
 
   if (!Project) return <div />;
   return (
@@ -175,12 +178,12 @@ export default function Project({
         <Disclosure.Panel
           className="
           mb-4
+          w-full
           "
         >
           <PortableText
             className="
               text-justify 
-              w-fit
               "
             value={description}
             components={components}
@@ -189,19 +192,19 @@ export default function Project({
           <PortableText
             className="
               text-left 
-              w-full
               "
             value={credits}
           />
-          <div className="overflow-x-auto">
-            {gallery.map((image) => (
-              <Image
-                {...useImageProps(image)}
-                key={image._key}
-                className="w-full object-contain"
-              />
-            ))}
-          </div>
+          {/* <div className="overflow-x-auto">
+            <Image
+              {...useImageProps(
+                gallery.map((image) => {
+                  return image;
+                })
+              )}
+              className="w-full object-contain"
+            />
+          </div> */}
         </Disclosure.Panel>
       </Disclosure>
     </div>

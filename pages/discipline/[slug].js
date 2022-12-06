@@ -22,16 +22,16 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params: { slug } }) {
   //MENU ITEMS
   const disciplines = await client.fetch(
-    groq`*[_type == "discipline"] | order(asc){title, "slug": slug.current, _id}`
+    groq`*[_type == "discipline"]{title, "slug": slug.current, _id} | order(asc)`
   );
   const years = await client.fetch(
-    groq`*[_type == "year"] | order(asc){title, "slug": slug.current, _id}`
+    groq`*[_type == "year"]{title, "slug": slug.current, _id} | order(title desc)`
   );
 
   const disciplineQuery = groq`*[_type=="discipline" && slug.current == "${slug}"]{
     _id,
     title,
-  "projects": *[_type == "project" && references(^._id)]| order(year asc){
+  "projects": *[_type == "project" && references(^._id)]{
       _id,
       title,
       "slug": slug.current,
@@ -43,8 +43,8 @@ export async function getStaticProps({ params: { slug } }) {
       description,
       credits,
       gallery
-    }
-  } `;
+    } | order(date desc)
+  }`;
 
   const data = await client.fetch(disciplineQuery);
   const projects = await data[0].projects;
@@ -58,7 +58,7 @@ export async function getStaticProps({ params: { slug } }) {
 function ProjectsPage({ projects }) {
   return (
     <CenterFrame>
-      <div className="flex flex-col h-fit w-full mb-2 divide-y divide-dashed divide-black dark:divide-neutralWhite">
+      <div className="flex flex-col h-fit min-w-full mb-2 divide-y divide-dashed divide-black dark:divide-neutralWhite">
         {projects &&
           projects.map(
             ({

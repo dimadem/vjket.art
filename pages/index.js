@@ -16,10 +16,10 @@ export default withLayoutMain(Home);
 //fetching data for MainMenu
 export async function getStaticProps() {
   const disciplines = await client.fetch(
-    groq`*[_type == "discipline"] | order(asc){title, "slug": slug.current, _id}`
+    groq`*[_type == "discipline"]{title, "slug": slug.current, _id} | order(asc)`
   );
   const years = await client.fetch(
-    groq`*[_type == "year"] | order(asc){title, "slug": slug.current, _id}`
+    groq`*[_type == "year"]{title, "slug": slug.current, _id} | order(title desc)`
   );
 
   return {

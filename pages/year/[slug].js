@@ -22,16 +22,16 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params: { slug } }) {
   //MENU ITEMS
   const disciplines = await client.fetch(
-    groq`*[_type == "discipline"] | order(asc){title, "slug": slug.current, _id}`
+    groq`*[_type == "discipline"]{title, "slug": slug.current, _id} | order(asc)`
   );
   const years = await client.fetch(
-    groq`*[_type == "year"] | order(asc){title, "slug": slug.current, _id}`
+    groq`*[_type == "year"]{title, "slug": slug.current, _id} | order(title desc)`
   );
 
   const disciplineQuery = groq`*[_type=="year" && slug.current == "${slug}"]{
     _id,
     title,
-  "projects": *[_type == "project" && references(^._id)]| order(year asc){
+  "projects": *[_type == "project" && references(^._id)]{
       _id,
       title,
       "slug": slug.current,
@@ -42,7 +42,7 @@ export async function getStaticProps({ params: { slug } }) {
       "technologies": technologies[]->{title},
       description,
       credits
-    }
+    } | order(date desc)
   } `;
 
   const data = await client.fetch(disciplineQuery);

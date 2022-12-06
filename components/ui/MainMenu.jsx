@@ -153,19 +153,19 @@ export default function MainMenu() {
   );
 }
 
-//fetching data for MainMenu
-export async function getStaticProps() {
-  const disciplines = await client.fetch(
-    groq`*[_type == "discipline"] | order(asc){title, "slug": slug.current, _id}`
-  );
-  const years = await client.fetch(
-    groq`*[_type == "year"] | order(asc){title, "slug": slug.current, _id}`
-  );
+// //fetching data for MainMenu
+// export async function getStaticProps() {
+//   const disciplines = await client.fetch(
+//     groq`*[_type == "discipline"] | order(asc){title, "slug": slug.current, _id}`
+//   );
+//   const years = await client.fetch(
+//     groq`*[_type == "year"] | order(year asc){title, "slug": slug.current, _id}`
+//   );
 
-  return {
-    props: {
-      disciplines,
-      years,
-    },
-  };
-}
+//   return {
+//     props: {
+//       disciplines,
+//       years,
+//     },
+//   };
+// }
