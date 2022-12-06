@@ -49,7 +49,6 @@ export default function Project({
   };
 
   const imageProps = useImageProps(mainImage);
-  console.log(imageProps);
   // const images = gallery.map((image) => {
   //   return image;
   // });
@@ -59,7 +58,7 @@ export default function Project({
   return (
     <div
       key={_id}
-      className="flex flex-col justify-start mx-3 font-redhatmono min-w-full h-fit"
+      className="flex flex-col justify-start mx-3 font-redhatmono h-fit"
     >
       <div className="flex flex-row space-x-2 h-min pb-5">
         <div className="w-1/2">
@@ -98,7 +97,7 @@ export default function Project({
       </div>
 
       <div className="flex flex-row space-x-2  items-center">
-        <div className="w-1/2 h-min">
+        <div className="w-1/2">
           <Image
             className="
             rounded-sm
@@ -106,8 +105,8 @@ export default function Project({
            dark:bg-neutralWhite
            "
             {...imageProps}
-            layout="responsive"
             alt={"mainImage"}
+            style={{ width: "100%", height: "100%" }}
             priority
           />
         </div>
