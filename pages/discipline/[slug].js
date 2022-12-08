@@ -94,7 +94,7 @@ function ProjectsPage({ projects }) {
             )}
         </div>
       </CenterFrame>
-      <InfoBar discipline={projects && projects[0].disciplines[0].title} />
+      <InfoBar discipline={projects && projects[0]?.disciplines[0]?.title} />
     </>
   );
 }

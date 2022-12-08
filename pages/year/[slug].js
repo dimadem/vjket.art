@@ -90,7 +90,7 @@ function ProjectsPage({ projects }) {
           )}
         </div>
       </CenterFrame>
-      <InfoBar year={projects && projects[0].date} />
+      <InfoBar year={projects && projects[0]?.date} />
     </>
   );
 }

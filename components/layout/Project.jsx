@@ -50,18 +50,14 @@ export default function Project({
   };
 
   const imageProps = useImageProps(mainImage);
-  // const images = gallery.map((image) => {
-  //   return image;
-  // });
-  // console.log(images);
 
   if (!Project) return <div />;
   return (
     <div
       key={_id}
-      className="flex flex-col justify-start mx-3 font-redhatmono h-fit"
+      className="flex flex-col h-fit pt-7 justify-start mx-3 font-redhatmono"
     >
-      <div className="flex flex-row items-center pb-5 space-x-2">
+      <div className="flex flex-row items-cente pb-5 space-x-2">
         <div className="w-1/2">
           <span
             className="
@@ -192,16 +188,7 @@ export default function Project({
               "
             value={credits}
           />
-          {/* <div className="overflow-x-auto">
-            <Image
-              {...useImageProps(
-                gallery.map((image) => {
-                  return image;
-                })
-              )}
-              className="w-full object-contain"
-            />
-          </div> */}
+          <div className="">console.log("GALLERY", gallery);</div>
         </Disclosure.Panel>
       </Disclosure>
     </div>

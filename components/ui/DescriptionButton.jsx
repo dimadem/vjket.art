@@ -5,14 +5,15 @@ export default function ShowDescriptionButton() {
   return (
     <Disclosure.Button
       className="
-    h-min 
-    ml-auto 
-    mr-7 
+    h-fit
+    w-fit
+    self-center
+    ml-auto
     ui-open:rotate-180 
     ui-open:transform
     "
     >
-      {<BsCaretDownFill size={30} />}
+      {<BsCaretDownFill size={20} />}
     </Disclosure.Button>
   );
 }
