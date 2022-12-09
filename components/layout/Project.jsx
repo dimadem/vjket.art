@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useImageProps } from "../../lib/next-sanity-image";
 import { PortableText } from "@portabletext/react";
 import Vimeo from "@u-wave/react-vimeo";
+import Carousel from "../ui/Carousel";
 
 export default function Project({
   _id /* string */,
@@ -50,6 +51,12 @@ export default function Project({
   };
 
   const imageProps = useImageProps(mainImage);
+
+  const galleryProps = gallery?.images?.map((image) => {
+    return useImageProps(image);
+  });
+
+  console.log("galleryProps", galleryProps);
 
   if (!Project) return <div />;
   return (
@@ -188,7 +195,7 @@ export default function Project({
               "
             value={credits}
           />
-          <div className="">console.log("GALLERY", gallery);</div>
+          <div className="">{/* <Carousel></Carousel> */}</div>
         </Disclosure.Panel>
       </Disclosure>
     </div>
