@@ -42,7 +42,7 @@ export default function Project({
     );
   };
 
-  const components = {
+  const componentsDescription = {
     types: {
       image: ImageComponent,
       vimeo: VimeoComponent,
@@ -51,6 +51,29 @@ export default function Project({
     },
     block: {
       normal: ({ children }) => <p className="text-justify pt-1">{children}</p>,
+      h1: ({ children }) => <h1 className="text-2xl">{children}</h1>,
+      h2: ({ children }) => <h2 className="text-xl">{children}</h2>,
+    },
+    marks: {
+      em: ({ children }) => (
+        <em className="text-gray-600 font-semibold">{children}</em>
+      ),
+    },
+    list: {
+      // Ex. 1: customizing common list types
+      bullet: ({ children }) => <ul className="mt-xl">{children}</ul>,
+    },
+  };
+
+  const componentsCredits = {
+    types: {
+      image: ImageComponent,
+      vimeo: VimeoComponent,
+      // Any other custom types you have in your content
+      // Examples: mapLocation, contactForm, code, featuredProjects, latestNews, etc.
+    },
+    block: {
+      normal: ({ children }) => <p className="text-left pt-1">{children}</p>,
       h1: ({ children }) => <h1 className="text-2xl">{children}</h1>,
       h2: ({ children }) => <h2 className="text-xl">{children}</h2>,
     },
@@ -209,25 +232,12 @@ export default function Project({
 
       <Disclosure>
         <ShowDescriptionButton />
-        <Disclosure.Panel
-          className="
-          mb-4
-          w-full
-          "
-        >
+        <Disclosure.Panel className="mb-4 w-full">
           <PortableText
-            className="pt-6"
             value={description}
-            components={components}
+            components={componentsDescription}
           />
-
-          <PortableText
-            className="
-              text-left
-              "
-            value={credits}
-            components={components}
-          />
+          <PortableText value={credits} components={componentsCredits} />
           <div ref={sliderRef} className="keen-slider pt-4 py-1">
             {gallery &&
               gallery?.images?.map((image, key) => {
