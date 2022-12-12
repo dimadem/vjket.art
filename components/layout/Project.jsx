@@ -49,28 +49,19 @@ export default function Project({
       // Any other custom types you have in your content
       // Examples: mapLocation, contactForm, code, featuredProjects, latestNews, etc.
     },
-  };
-
-  const buildSerializers = {
-    h1: (props) => {
-      <h1 className="text-2xl font-bold my-5" {...props} />;
+    block: {
+      normal: ({ children }) => <p className="text-justify pt-1">{children}</p>,
+      h1: ({ children }) => <h1 className="text-2xl">{children}</h1>,
+      h2: ({ children }) => <h2 className="text-xl">{children}</h2>,
     },
-    h2: (props) => {
-      <h2 className="text-xl font-bold my-5" {...props} />;
+    marks: {
+      em: ({ children }) => (
+        <em className="text-gray-600 font-semibold">{children}</em>
+      ),
     },
-    li: ({ children }) => {
-      <li className="ml-4 list-disc">{children}</li>;
-    },
-    link: ({ href, children }) => {
-      <a href={href} className="text-blue-500 hover:underline">
-        {children}
-      </a>;
-    },
-    // normal: (props) => {
-    //   <p className="p-5" {...props} />;
-    // },
-    normal: ({ children }) => {
-      <p className="text-3xl">{children}</p>;
+    list: {
+      // Ex. 1: customizing common list types
+      bullet: ({ children }) => <ul className="mt-xl">{children}</ul>,
     },
   };
 
@@ -89,7 +80,7 @@ export default function Project({
   );
   // mainImage
   const imageProps = useImageProps(mainImage);
-  console.log(description);
+
   if (!Project) return <div />;
   return (
     <div
@@ -228,7 +219,6 @@ export default function Project({
             className="pt-6"
             value={description}
             components={components}
-            serializers={buildSerializers}
           />
 
           <PortableText
@@ -236,6 +226,7 @@ export default function Project({
               text-left
               "
             value={credits}
+            components={components}
           />
           <div ref={sliderRef} className="keen-slider pt-4 py-1">
             {gallery &&
