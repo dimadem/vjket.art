@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useImageProps } from "../../lib/next-sanity-image";
 import { PortableText } from "@portabletext/react";
 import Vimeo from "@u-wave/react-vimeo";
+import "keen-slider/keen-slider.min.css";
+import { useKeenSlider } from "keen-slider/react";
 
 export default function Project({
   _id /* string */,
@@ -48,7 +50,20 @@ export default function Project({
       // Examples: mapLocation, contactForm, code, featuredProjects, latestNews, etc.
     },
   };
+
+  // ImgGallery
   const GalleryProps = (image) => useImageProps(image);
+  const [sliderRef, instanceRef] = useKeenSlider(
+    {
+      slideChanged() {
+        console.log("slide changed");
+      },
+    },
+    [
+      // add plugins here
+    ]
+  );
+  // mainImage
   const imageProps = useImageProps(mainImage);
 
   if (!Project) return <div />;
@@ -188,10 +203,15 @@ export default function Project({
               "
             value={credits}
           />
-          <div className="">
+          <div ref={sliderRef} className="keen-slider">
             {gallery?.images?.map((image, key) => {
               return (
-                <Image key={key} {...GalleryProps(image)} alt="Gallery Image" />
+                <Image
+                  key={key}
+                  {...GalleryProps(image)}
+                  alt="Gallery Image"
+                  className="keen-slider__slide"
+                />
               );
             })}
           </div>
