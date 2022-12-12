@@ -48,7 +48,7 @@ export default function Project({
       // Examples: mapLocation, contactForm, code, featuredProjects, latestNews, etc.
     },
   };
-
+  const galleryProps = (image) => useImageProps(image);
   const imageProps = useImageProps(mainImage);
 
   if (!Project) return <div />;
@@ -189,9 +189,10 @@ export default function Project({
             value={credits}
           />
           <div className="">
-            {gallery?.images?.map((image) => {
-              const galleryProps = useImageProps(image);
-              return <Image {...galleryProps} alt="Gallery Image" />;
+            {gallery?.images?.map((image, key) => {
+              return (
+                <Image key={key} {...galleryProps(image)} alt="Gallery Image" />
+              );
             })}
           </div>
         </Disclosure.Panel>
