@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useImageProps } from "../../lib/next-sanity-image";
 import { PortableText } from "@portabletext/react";
 import Vimeo from "@u-wave/react-vimeo";
+import "keen-slider/keen-slider.min.css";
+import { useKeenSlider } from "keen-slider/react";
 
 export default function Project({
   _id /* string */,
@@ -49,6 +51,49 @@ export default function Project({
     },
   };
 
+  // ImgGallery
+  const GalleryProps = (image) => useImageProps(image);
+  const [sliderRef, instanceRef] = useKeenSlider(
+    {
+      loop: true,
+      slides: {
+        origin: "center",
+        perView: 2,
+        spacing: 15,
+      },
+    },
+    [
+      (slider) => {
+        let timeout;
+        let mouseOver = false;
+        function clearNextTimeout() {
+          clearTimeout(timeout);
+        }
+        function nextTimeout() {
+          clearTimeout(timeout);
+          if (mouseOver) return;
+          timeout = setTimeout(() => {
+            slider.next();
+          }, 2000);
+        }
+        slider.on("created", () => {
+          slider.container.addEventListener("mouseover", () => {
+            mouseOver = true;
+            clearNextTimeout();
+          });
+          slider.container.addEventListener("mouseout", () => {
+            mouseOver = false;
+            nextTimeout();
+          });
+          nextTimeout();
+        });
+        slider.on("dragStarted", clearNextTimeout);
+        slider.on("animationEnded", nextTimeout);
+        slider.on("updated", nextTimeout);
+      },
+    ]
+  );
+  // mainImage
   const imageProps = useImageProps(mainImage);
 
   if (!Project) return <div />;
@@ -188,7 +233,18 @@ export default function Project({
               "
             value={credits}
           />
-          <div className="">console.log("GALLERY", gallery);</div>
+          <div ref={sliderRef} className="keen-slider">
+            {gallery?.images?.map((image, key) => {
+              return (
+                <Image
+                  key={key}
+                  {...GalleryProps(image)}
+                  alt="Gallery Image"
+                  className="keen-slider__slide"
+                />
+              );
+            })}
+          </div>
         </Disclosure.Panel>
       </Disclosure>
     </div>
