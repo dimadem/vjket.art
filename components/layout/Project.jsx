@@ -22,7 +22,7 @@ export default function Project({
 }) {
   const ImageComponent = (description) => {
     return (
-      <div className="flex justify-center my-4">
+      <div className="w-1/2 justify-center py-2 px-1">
         <Image
           {...useImageProps(description.value)}
           style={{ width: "100%", height: "auto" }}
@@ -58,40 +58,11 @@ export default function Project({
       loop: true,
       slides: {
         origin: "center",
-        perView: 2,
+        perView: 1,
         spacing: 15,
       },
     },
-    [
-      (slider) => {
-        let timeout;
-        let mouseOver = false;
-        function clearNextTimeout() {
-          clearTimeout(timeout);
-        }
-        function nextTimeout() {
-          clearTimeout(timeout);
-          if (mouseOver) return;
-          timeout = setTimeout(() => {
-            slider.next();
-          }, 2000);
-        }
-        slider.on("created", () => {
-          slider.container.addEventListener("mouseover", () => {
-            mouseOver = true;
-            clearNextTimeout();
-          });
-          slider.container.addEventListener("mouseout", () => {
-            mouseOver = false;
-            nextTimeout();
-          });
-          nextTimeout();
-        });
-        slider.on("dragStarted", clearNextTimeout);
-        slider.on("animationEnded", nextTimeout);
-        slider.on("updated", nextTimeout);
-      },
-    ]
+    []
   );
   // mainImage
   const imageProps = useImageProps(mainImage);
@@ -156,6 +127,8 @@ export default function Project({
             className="
             font-medium 
             text-lg 
+            text-neutralBlack
+            dark:text-neutralWhite
             tracking-widest
             "
           >
@@ -166,6 +139,8 @@ export default function Project({
             className="
             font-light 
             text-lg
+            text-neutralBlack
+            dark:text-neutralWhite
             "
           >
             {location}
@@ -175,6 +150,8 @@ export default function Project({
             className="
             font-medium 
             text-lg 
+            text-neutralBlack
+            dark:text-neutralWhite
             tracking-widest
             "
           >
@@ -185,6 +162,8 @@ export default function Project({
             className="
             font-light 
             text-lg
+            text-neutralBlack
+            dark:text-neutralWhite
             "
           >
             {date}
@@ -194,6 +173,8 @@ export default function Project({
             className="
             font-medium 
             text-lg 
+            text-neutralBlack
+            dark:text-neutralWhite
             tracking-widest
             "
           >
@@ -203,6 +184,8 @@ export default function Project({
             className="
             font-light 
             text-lg
+            text-neutralBlack
+            dark:text-neutralWhite
             "
           >
             {technologies}
@@ -220,7 +203,8 @@ export default function Project({
         >
           <PortableText
             className="
-              text-justify 
+              text-justify
+              whitespace-normal
               "
             value={description}
             components={components}
@@ -228,21 +212,22 @@ export default function Project({
 
           <PortableText
             className="
-              text-left 
+              text-left
               "
             value={credits}
           />
-          <div ref={sliderRef} className="keen-slider">
-            {gallery?.images?.map((image, key) => {
-              return (
-                <Image
-                  key={key}
-                  {...GalleryProps(image)}
-                  alt="Gallery Image"
-                  className="keen-slider__slide"
-                />
-              );
-            })}
+          <div ref={sliderRef} className="keen-slider pt-4 py-1">
+            {gallery &&
+              gallery?.images?.map((image, key) => {
+                return (
+                  <Image
+                    key={key}
+                    {...GalleryProps(image)}
+                    alt="Gallery Image"
+                    className="keen-slider__slide"
+                  />
+                );
+              })}
           </div>
         </Disclosure.Panel>
       </Disclosure>

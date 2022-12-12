@@ -9,9 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.4",
-    "@headlessui/tailwindcss": "^0.1.1",
-    "@next/font": "^13.0.4",
+    "@headlessui/react": "^1.7.5",
+    "@headlessui/tailwindcss": "^0.1.2",
+    "@next/font": "^13.0.6",
     "@portabletext/react": "^2.0.0",
     "@u-wave/react-vimeo": "^0.9.10",
     "eslint": "8.28.0",
