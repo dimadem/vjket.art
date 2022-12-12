@@ -32,7 +32,7 @@ export async function getStaticProps({ params: { slug } }) {
   const disciplineQuery = groq`*[_type=="year" && slug.current == "${slug}"]{
     _id,
     title,
-  "projects": *[_type == "project" && references(^._id) && !(_id in path("drafts.**")]{
+  "projects": *[_type == "project" && references(^._id) && !(_id in path("drafts.**"))]{
       _id,
       title,
       "slug": slug.current,
