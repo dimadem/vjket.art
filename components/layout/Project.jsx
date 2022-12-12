@@ -147,9 +147,8 @@ export default function Project({
            dark:bg-neutralWhite
            "
             {...imageProps}
-            alt={"mainImage"}
+            alt="mainImage"
             style={{ width: "50%", height: "auto" }}
-            priority
           />
         </div>
         <ul className="w-1/2 flex flex-col justify-between">
