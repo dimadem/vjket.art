@@ -6,12 +6,11 @@ export default function PlaySoundButton() {
   const [pause, usePause] = useState(false);
   const [play, { stop }] = useSound("./soundmono.mp3");
 
-  function toggleButton() {
-    if (pause) {
-      usePause(false);
+  function useToggleButton() {
+    usePause(!pause);
+    if (pause == false) {
       play();
     } else {
-      usePause(true);
       stop();
     }
   }
@@ -19,7 +18,9 @@ export default function PlaySoundButton() {
   return (
     <>
       <div key="bsfillplayfill" className="sidebar-icon group">
-        <button onClick={toggleButton}>{<BsFillPlayFill size="40" />}</button>
+        <button onClick={useToggleButton}>
+          {<BsFillPlayFill size="40" />}
+        </button>
         <span className="sidebar-tooltip group-hover:scale-100">play</span>
       </div>
     </>
