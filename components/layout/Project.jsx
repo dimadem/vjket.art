@@ -35,7 +35,7 @@ export default function Project({
   const VimeoComponent = (description) => {
     return (
       <Vimeo
-        className="flex justify-center p-2 my-2"
+        className="float-left p-2"
         id={description.value._key}
         video={description.value.url}
       />
@@ -51,9 +51,32 @@ export default function Project({
     },
   };
 
+  const buildSerializers = {
+    h1: (props) => {
+      <h1 className="text-2xl font-bold my-5" {...props} />;
+    },
+    h2: (props) => {
+      <h2 className="text-xl font-bold my-5" {...props} />;
+    },
+    li: ({ children }) => {
+      <li className="ml-4 list-disc">{children}</li>;
+    },
+    link: ({ href, children }) => {
+      <a href={href} className="text-blue-500 hover:underline">
+        {children}
+      </a>;
+    },
+    // normal: (props) => {
+    //   <p className="p-5" {...props} />;
+    // },
+    normal: ({ children }) => {
+      <p className="text-3xl">{children}</p>;
+    },
+  };
+
   // ImgGallery
   const GalleryProps = (image) => useImageProps(image);
-  const [sliderRef, instanceRef] = useKeenSlider(
+  const [sliderRef] = useKeenSlider(
     {
       loop: true,
       slides: {
@@ -66,12 +89,12 @@ export default function Project({
   );
   // mainImage
   const imageProps = useImageProps(mainImage);
-
+  console.log(description);
   if (!Project) return <div />;
   return (
     <div
       key={_id}
-      className="flex flex-col h-fit pt-7 justify-start mx-3 font-redhatmono"
+      className="flex flex-col h-fit pt-7 justify-start mx-3 my-1 font-redhatmono"
     >
       <div className="flex flex-row items-cente pb-5 space-x-2">
         <div className="w-1/2">
@@ -202,12 +225,10 @@ export default function Project({
           "
         >
           <PortableText
-            className="
-              text-justify
-              whitespace-normal
-              "
+            className="pt-6"
             value={description}
             components={components}
+            serializers={buildSerializers}
           />
 
           <PortableText
