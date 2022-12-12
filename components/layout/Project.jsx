@@ -58,7 +58,7 @@ export default function Project({
       loop: true,
       slides: {
         origin: "center",
-        perView: 1,
+        perView: 2,
         spacing: 15,
       },
     },
