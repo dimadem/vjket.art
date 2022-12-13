@@ -110,7 +110,7 @@ export default function Project({
       key={_id}
       className="flex flex-col h-fit pt-7 justify-start mx-3 my-1 font-redhatmono"
     >
-      <div className="flex flex-row items-cente pb-5 space-x-2">
+      <div className="flex flex-row items-cente space-x-2 pb-2">
         <div className="w-1/2">
           <span
             className="
@@ -136,8 +136,8 @@ export default function Project({
         >
           <span
             className="
-          font-normal 
-          text-3xl
+          font-normal
+          text-2xl
           truncate
           "
           >
@@ -162,8 +162,8 @@ export default function Project({
         <ul className="w-1/2 flex flex-col justify-between">
           <li
             className="
-            font-medium 
-            text-lg 
+            font-normal
+            text-lg
             text-neutralBlack
             dark:text-neutralWhite
             tracking-widest
@@ -174,10 +174,8 @@ export default function Project({
 
           <li
             className="
-            font-light 
-            text-lg
+            font-extralight
             text-neutralBlack
-            dark:text-neutralWhite
             "
           >
             {location}
@@ -185,7 +183,7 @@ export default function Project({
 
           <li
             className="
-            font-medium 
+            font-normal
             text-lg 
             text-neutralBlack
             dark:text-neutralWhite
@@ -197,10 +195,8 @@ export default function Project({
 
           <li
             className="
-            font-light 
-            text-lg
+            font-extralight
             text-neutralBlack
-            dark:text-neutralWhite
             "
           >
             {date}
@@ -208,8 +204,8 @@ export default function Project({
 
           <li
             className="
-            font-medium 
-            text-lg 
+            font-normal
+            text-lg
             text-neutralBlack
             dark:text-neutralWhite
             tracking-widest
@@ -219,10 +215,8 @@ export default function Project({
           </li>
           <li
             className="
-            font-light 
-            text-lg
+            font-extralight
             text-neutralBlack
-            dark:text-neutralWhite
             "
           >
             {technologies}
