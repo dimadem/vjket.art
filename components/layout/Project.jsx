@@ -38,6 +38,7 @@ export default function Project({
         className="float-left p-2"
         id={description.value._key}
         video={description.value.url}
+        width="500%"
       />
     );
   };
@@ -95,8 +96,8 @@ export default function Project({
       loop: true,
       slides: {
         origin: "center",
-        perView: 2,
-        spacing: 15,
+        perView: 3,
+        spacing: 10,
       },
     },
     []
@@ -230,13 +231,14 @@ export default function Project({
 
       <Disclosure>
         <ShowDescriptionButton />
-        <Disclosure.Panel className="p-4 w-full bg-neutralWhite dark:bg-neutralBlack">
+        <Disclosure.Panel className="p-4 bg-neutralWhite dark:bg-neutralBlack">
           <PortableText
             value={description}
             components={componentsDescription}
           />
           <PortableText value={credits} components={componentsCredits} />
-          <div ref={sliderRef} className="keen-slider pt-4 py-1">
+
+          <div ref={sliderRef} className="keen-slider pt-4">
             {gallery &&
               gallery?.images?.map((image, key) => {
                 return (
