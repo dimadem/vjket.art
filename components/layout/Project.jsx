@@ -229,7 +229,7 @@ export default function Project({
 
       <Disclosure>
         <ShowDescriptionButton />
-        <Disclosure.Panel className="mb-4 w-full">
+        <Disclosure.Panel className="p-4 w-full bg-neutralWhite dark:bg-neutralBlack">
           <PortableText
             value={description}
             components={componentsDescription}
