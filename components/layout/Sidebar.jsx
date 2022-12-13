@@ -4,9 +4,9 @@ import SetThemeButton from "../ui/SetThemeButton";
 
 export default function Sidebar() {
   return (
-    <div className="fixed top-0 left-0 flex flex-col z-10 basis-16 h-screen order-first bg-black dark:bg-white">
+    <div className="flex order-first flex-col z-10 basis-16 min-h-full justify-between bg-black dark:bg-white">
       <MainMenu />
-      <div className="mt-auto">
+      <div className="">
         <PlaySoundButton />
         <SetThemeButton />
       </div>

@@ -108,9 +108,9 @@ export default function Project({
   return (
     <div
       key={_id}
-      className="flex flex-col h-fit pt-7 justify-start mx-3 my-1 font-redhatmono"
+      className="flex flex-col h-fit pt-4 justify-start mx-3 my-1 font-redhatmono"
     >
-      <div className="flex flex-row items-cente space-x-2 pb-2">
+      <div className="flex flex-row items-center space-x-2 pb-2">
         <div className="w-1/2">
           <span
             className="
@@ -138,6 +138,7 @@ export default function Project({
             className="
           font-normal
           text-2xl
+          tracking-widest
           truncate
           "
           >

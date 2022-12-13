@@ -4,11 +4,7 @@ import { client } from "../lib/sanity.server";
 import { groq } from "next-sanity";
 
 function Home() {
-  return (
-    <>
-      <PolyMenu />
-    </>
-  );
+  return <PolyMenu />;
 }
 
 export default withLayoutMain(Home);

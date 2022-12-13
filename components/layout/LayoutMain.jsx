@@ -2,10 +2,10 @@ import Sidebar from "./Sidebar";
 
 const Layout = ({ children }) => {
   return (
-    <>
+    <div className="flex flex-row">
       <Sidebar />
       {children}
-    </>
+    </div>
   );
 };
 export const withLayoutMain = (Component) => {
