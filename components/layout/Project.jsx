@@ -201,7 +201,7 @@ export default function Project({
             dark:text-white
             "
           >
-            {date}
+            {date.slice(0, 4)}
           </li>
 
           <li
