@@ -159,13 +159,13 @@ export default function Project({
             style={{ width: "50%", height: "auto" }}
           />
         </div>
-        <ul className="w-1/2 flex flex-col justify-between">
+        <ul className="w-1/2 flex flex-col justify-around">
           <li
             className="
             font-normal
             text-lg
             text-neutralBlack
-            dark:text-neutralWhite
+            dark:text-white
             tracking-widest
             "
           >
@@ -176,6 +176,7 @@ export default function Project({
             className="
             font-extralight
             text-neutralBlack
+            dark:text-white
             "
           >
             {location}
@@ -186,7 +187,7 @@ export default function Project({
             font-normal
             text-lg 
             text-neutralBlack
-            dark:text-neutralWhite
+            dark:text-white
             tracking-widest
             "
           >
@@ -197,6 +198,7 @@ export default function Project({
             className="
             font-extralight
             text-neutralBlack
+            dark:text-white
             "
           >
             {date}
@@ -207,7 +209,7 @@ export default function Project({
             font-normal
             text-lg
             text-neutralBlack
-            dark:text-neutralWhite
+            dark:text-white
             tracking-widest
             "
           >
@@ -217,6 +219,7 @@ export default function Project({
             className="
             font-extralight
             text-neutralBlack
+            dark:text-white
             "
           >
             {technologies}

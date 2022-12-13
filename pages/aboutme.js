@@ -7,15 +7,13 @@ function aboutme() {
   return (
     <CenterFrame>
       <div className="page flex flex-col font-redhatmono dark:text-white">
-        <div className="flex flex-row justify-between">
-          <div>
-            <h1 className="font-normal text-5xl">KATERYNA PITS</h1>
-          </div>
-          <div>
-            <h1 className="font-normal text-5xl">VJkET</h1>
-          </div>
+        <div className="flex flex-row justify-around">
+          <h1 className="w-1/2 font-normal text-5xl text-center">
+            KATERYNA PITS
+          </h1>
+          <h1 className="w-1/2 font-normal text-5xl text-center">VJkET</h1>
         </div>
-        <div className="flex flex-row py-16 h-fit justify-between">
+        <div className="flex flex-row py-16 h-fit justify-around">
           <video
             muted
             preload="auto"

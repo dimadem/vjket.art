@@ -26,11 +26,11 @@ export default function MainMenu() {
               cursor-default 
               select-none 
               py-2 px-3
-              ui-not-active:text-white 
-              ui-not-active:dark:text-black 
+              ui-not-active:text-neutralWhite
+              ui-not-active:dark:text-neutralBlack
               ui-active:bg-white
-              ui-active:text-black 
-              ui-active:dark:bg-black 
+              ui-active:text-neutralBlack
+              ui-active:dark:bg-black
               ui-active:dark:text-neutralWhite"
           >
             <Link href="/">home</Link>
@@ -43,11 +43,11 @@ export default function MainMenu() {
               cursor-default 
               select-none 
               py-2 px-3
-              ui-not-active:text-white 
-              ui-not-active:dark:text-black 
+              ui-not-active:text-neutralWhite
+              ui-not-active:dark:text-neutralBlack
               ui-active:bg-white
-              ui-active:text-black 
-              ui-active:dark:bg-black 
+              ui-active:text-neutralBlack
+              ui-active:dark:bg-black
               ui-active:dark:text-neutralWhite"
           >
             <Link href="/aboutme">about me</Link>
@@ -63,8 +63,8 @@ export default function MainMenu() {
             select-none 
             py-2 px-1
             ui-not-active:text-white 
-            ui-not-active:dark:text-black 
-            ui-active:bg-white
+            ui-not-active:dark:text-black
+            ui-active:bg-white 
             ui-active:text-black 
             ui-active:dark:bg-black 
             ui-active:dark:text-neutralWhite"
@@ -84,11 +84,11 @@ export default function MainMenu() {
                 cursor-default 
                 select-none 
                 px-1 
-                ui-not-active:text-white
-                ui-not-active:dark:text-black
-                ui-active:bg-white 
-                ui-active:text-black 
-                ui-active:dark:bg-black 
+                ui-not-active:text-neutralWhite
+                ui-not-active:dark:text-neutralBlack
+                ui-active:bg-white
+                ui-active:text-neutralBlack
+                ui-active:dark:bg-black
                 ui-active:dark:text-neutralWhite"
                   >
                     <Link href={`/year/${slug}`}>{title}</Link>
@@ -103,11 +103,11 @@ export default function MainMenu() {
             cursor-default 
             select-none 
             p-2 
-            ui-not-active:text-white 
-            ui-not-active:dark:text-black
-            ui-active:bg-white 
-            ui-active:text-black 
-            ui-active:dark:bg-black 
+            ui-not-active:text-neutralWhite
+            ui-not-active:dark:text-neutralBlack
+            ui-active:bg-white
+            ui-active:text-neutralBlack
+            ui-active:dark:bg-black
             ui-active:dark:text-neutralWhite"
             >
               <Link href="https://vimeo.com/vjket">
@@ -119,12 +119,12 @@ export default function MainMenu() {
             cursor-default 
             select-none 
             p-2 
-            ui-not-active:text-white 
-            ui-not-active:dark:text-black
-            ui-active:bg-white 
-            ui-active:text-black 
-            ui-active:dark:bg-black 
-            ui-active:dark:text-neutralWhite"
+           ui-not-active:text-neutralWhite
+              ui-not-active:dark:text-neutralBlack
+              ui-active:bg-white
+              ui-active:text-neutralBlack
+              ui-active:dark:bg-black
+              ui-active:dark:text-neutralWhite"
             >
               <Link href="https://www.facebook.com/VJkET">
                 <BsFacebook />
