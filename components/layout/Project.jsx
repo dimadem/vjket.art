@@ -35,7 +35,7 @@ export default function Project({
   const VimeoComponent = (description) => {
     return (
       <Vimeo
-        className="float-left p-2"
+        className="float-left pr-5"
         id={description.value._key}
         video={description.value.url}
         width="500%"

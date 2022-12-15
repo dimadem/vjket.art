@@ -8,6 +8,7 @@ const Layout = ({ children }) => {
     </div>
   );
 };
+
 export const withLayoutMain = (Component) => {
   return function withLayoutComponent(props) {
     return (
