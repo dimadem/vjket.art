@@ -13,6 +13,9 @@
     "@headlessui/tailwindcss": "^0.1.2",
     "@next/font": "^13.0.6",
     "@portabletext/react": "^2.0.0",
+    "@react-three/drei": "^9.47.1",
+    "@react-three/fiber": "^8.9.1",
+    "@types/three": "^0.146.0",
     "@u-wave/react-vimeo": "^0.9.10",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.4",
@@ -21,9 +24,11 @@
     "next-sanity": "^3.0.2",
     "next-sanity-image": "^5.0.0",
     "next-themes": "^0.2.1",
+    "r3f-perf": "^6.6.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.6.0",
+    "three": "^0.147.0",
     "use-sound": "^4.0.1"
   },
   "devDependencies": {
