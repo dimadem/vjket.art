@@ -1,23 +1,55 @@
 import { BufferGeometry, Vector3, DoubleSide, CameraHelper } from "three";
 import Link from "next/link";
-import { useRef, useMemo, useContext, useState } from "react";
+import { useRef, useMemo, useContext, useState, useEffect } from "react";
 import { useFrame, extend } from "@react-three/fiber";
 import { MeshDistortMaterial, Text3D, useHelper } from "@react-three/drei";
 import { MenuContext } from "../../context/menu.context";
 // extend({ Link });
+import { useTheme } from "next-themes";
 
 export default function Poly() {
+  const { theme } = useTheme();
+
+  // set color for darkmode and lightmode
+  const [colorPoly, setColorPoly] = useState("#4B4B4B");
+  const [colorYear, setColorYear] = useState("#171717");
+
+  useEffect(() => {
+    if (theme == "light") setColorPoly("#4B4B4B");
+    if (theme == "dark") setColorPoly("#D9D9D9");
+    if (theme == "light") setColorYear("#171717");
+    if (theme == "dark") setColorYear("#f1f1f1");
+  }, [theme]);
+
+  // const height = 1080;
+  // const black = "#171717";
+  // const white = "#f1f1f1";
+  // const neutralBlack = "#4B4B4B";
+  // const neutralWhite = "#D9D9D9";
+
+  // get data from context
   const { menu, setMenu } = useContext(MenuContext);
   const { disciplines, years } = menu;
+
+  // Refs
   const mesh = useRef();
+
+  // States
   const [hoveredPoly, hoverPoly] = useState(true);
   const [hoveredYear, hoverYear] = useState(true);
-  const [useColor, setColor] = useState("#4B4B4B"); // color of text for dark and white mode
 
+  // Colors
+  const black = "#171717";
+  const white = "#f1f1f1";
+  const neutralBlack = "#4B4B4B";
+  const neutralWhite = "#D9D9D9";
+
+  // Animation rotation
   useFrame((state, delta) => {
     mesh.current.rotation.y += delta / 10;
   }, []);
 
+  // construct Poly
   let geometry = useMemo(() => {
     const g = new BufferGeometry();
     const points = [
@@ -41,25 +73,24 @@ export default function Poly() {
     return g;
   }, []);
 
-  const pointsForYears = [
-    [1, 1, 1], //a
-    [-1, -1, 1], //b
-    [-1, 1, -1], //c
-    [1, -1, -1], //d
-  ];
-
-  years.forEach((year, index) => {
-    // console.log("year", year);
-    // console.log("index", index);
-    // console.log("pointsForYears[index]", pointsForYears[index]);
-    year.position = pointsForYears[index];
-  });
-
-  // console.log("YEARS ADD", years);
+  useEffect(() => {
+    // each year has a position
+    const pointsForYears = [
+      [1, 1, 1], //a
+      [-1, -1, 1], //b
+      [-1, 1, -1], //c
+      [1, -1, -1], //d
+    ];
+    // put the position in the year object
+    years.forEach((year, index) => {
+      year.position = pointsForYears[index];
+    });
+  }, [years]);
 
   return (
     <>
       <group ref={mesh} scale={1.5}>
+        {/* Poly */}
         <mesh
           geometry={geometry}
           position={[0, 0, 0]}
@@ -71,12 +102,12 @@ export default function Poly() {
             distort={0.2}
             // speed={1}
             roughness={0}
-            color="#4B4B4B"
+            color={colorPoly}
             side={DoubleSide}
             wireframe={hoveredPoly ? true : false}
           />
         </mesh>
-
+        {/* Years */}
         {years &&
           years.map(({ slug, title, _id, position }) => (
             <Text3D
@@ -90,7 +121,7 @@ export default function Poly() {
             >
               {/* <link href={`/year/${slug}`}>{title}</link> */}
               {title}
-              <meshBasicMaterial color="black" />
+              <meshBasicMaterial color={colorYear} />
             </Text3D>
           ))}
       </group>
