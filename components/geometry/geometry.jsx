@@ -1,8 +1,8 @@
-import { BufferGeometry, Vector3, DoubleSide } from "three";
+import { BufferGeometry, Vector3, DoubleSide, CameraHelper } from "three";
 import Link from "next/link";
 import { useRef, useMemo, useContext, useState } from "react";
 import { useFrame, extend } from "@react-three/fiber";
-import { Center, MeshDistortMaterial, Text3D } from "@react-three/drei";
+import { MeshDistortMaterial, Text3D, useHelper } from "@react-three/drei";
 import { MenuContext } from "../../context/menu.context";
 // extend({ Link });
 
@@ -86,7 +86,7 @@ export default function Poly() {
               size={0.15}
               height={0.02}
               renderOrder="1"
-              // onClick={() => (window.location.href = `/year/${slug}`)} // use next/link
+              onClick={() => (window.location.href = `/year/${slug}`)} // use next/link
             >
               {/* <link href={`/year/${slug}`}>{title}</link> */}
               {title}
