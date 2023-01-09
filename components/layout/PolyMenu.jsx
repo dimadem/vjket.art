@@ -23,7 +23,6 @@ export default function PolyMenu() {
     if (theme == "light") setColor("#D9D9D9");
   }, [theme]);
 
-  const height = 1080;
   const black = "#171717";
   const white = "#f1f1f1";
   const neutralBlack = "#4B4B4B";
@@ -34,24 +33,10 @@ export default function PolyMenu() {
       {/* Canvas */}
       <Canvas gl={{ antialias: false }}>
         {/* performance data */}
-        {/* <Perf position="bottom-left" /> */}
+        <Perf position="bottom-left" />
 
         {/* background */}
         <color args={[color]} attach="background" />
-
-        {/* Effects */}
-        <EffectComposer>
-          <DepthOfField
-            focusDistance={0.0025}
-            focalLength={0.007}
-            bokehScale={4}
-            height={height}
-          />
-          <Noise opacity={0.1} />
-          <Glitch delay={[0.5, 2]} duration={[0.01, 0.2]} />
-
-          <Vignette offset={0.1} darkness={0.6} />
-        </EffectComposer>
 
         {/* Camera */}
         <OrbitControls
@@ -67,6 +52,20 @@ export default function PolyMenu() {
 
         {/* Geometry */}
         <Poly />
+
+        {/* Effects */}
+        <EffectComposer>
+          {/* <DepthOfField
+            focusDistance={0.0025}
+            focalLength={0.007}
+            bokehScale={4}
+            height={240}
+          /> */}
+          <Noise opacity={0.7} />
+          <Glitch delay={[0.5, 2]} duration={[0.01, 0.2]} />
+
+          <Vignette offset={0.1} darkness={0.6} />
+        </EffectComposer>
       </Canvas>
     </div>
   );

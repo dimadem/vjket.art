@@ -2,7 +2,6 @@ import { useRef, useMemo, useContext, useState, useEffect } from "react";
 import { MenuContext } from "../../context/menu.context";
 import { useTheme } from "next-themes";
 import { BufferGeometry, Vector3, DoubleSide } from "three";
-import Link from "next/link";
 import { useFrame } from "@react-three/fiber";
 import { MeshDistortMaterial, Text3D } from "@react-three/drei";
 
@@ -13,7 +12,7 @@ export default function Poly() {
   const [colorPoly, setColorPoly] = useState("#4B4B4B");
   const [colorYear, setColorYear] = useState("#171717");
 
-  useEffect(() => {
+  useMemo(() => {
     if (theme == "light") setColorPoly("#4B4B4B");
     if (theme == "dark") setColorPoly("#D9D9D9");
     if (theme == "light") setColorYear("#171717");
@@ -29,7 +28,7 @@ export default function Poly() {
 
   // States
   const [hoveredPoly, hoverPoly] = useState(true);
-  const [hoveredYear, hoverYear] = useState(true);
+  // const [hoveredYear, hoverYear] = useState(true);
 
   // Colors
   // const black = "#171717";
