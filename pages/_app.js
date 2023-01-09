@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }) {
         }
       `}</style>
       <Head>
-        <title>welcone to VJkET website</title>
+        <title>VJkET</title>
         <link rel="icon" href="./favicon.ico" />
       </Head>
       <MenuContextProvider
