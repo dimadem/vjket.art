@@ -26,7 +26,7 @@ export default function PolyMenu() {
       {/* Canvas */}
       <Canvas gl={{ antialias: false }}>
         {/* performance data */}
-        <Perf position="bottom-left" />
+        {/* <Perf position="bottom-left" /> */}
 
         {/* background */}
         <color args={[color]} attach="background" />
