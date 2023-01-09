@@ -8,8 +8,8 @@ export default function SetThemeButton() {
     <div className="sidebar-icon group">
       <button
         onClick={() => {
-          if (theme == "light") setTheme("dark");
-          if (theme == "dark") setTheme("light");
+          if (theme === "light") setTheme("dark");
+          if (theme === "dark") setTheme("light");
         }}
       >
         {<BsFillSquareFill size="30" />}
