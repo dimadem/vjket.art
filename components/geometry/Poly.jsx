@@ -4,9 +4,12 @@ import { useTheme } from "next-themes";
 import { BufferGeometry, Vector3, DoubleSide } from "three";
 import { useFrame } from "@react-three/fiber";
 import { MeshDistortMaterial, Text3D } from "@react-three/drei";
+import { useRouter } from "next/router";
 
 export default function Poly() {
   const { theme } = useTheme();
+  // create router for navigation
+  const router = useRouter();
 
   // set color for darkmode and lightmode
   const [colorPoly, setColorPoly] = useState("#4B4B4B");
@@ -101,7 +104,7 @@ export default function Poly() {
             font="../Red_Hat_Mono-Light_Regular.json"
             size={0.2}
             height={0.07}
-            onClick={() => (window.location.href = `/year/${slug}`)} // use next/link
+            onClick={() => router.push(`/year/${slug}`)}
             onPointerOver={() => hoverYear(false)}
             onPointerOut={() => hoverYear(true)}
           >

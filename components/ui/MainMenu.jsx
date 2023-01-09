@@ -83,7 +83,7 @@ export default function MainMenu() {
                   text-lg
                 cursor-default 
                 select-none 
-                px-1 
+                px-2 
                 ui-not-active:text-neutralWhite
                 ui-not-active:dark:text-neutralBlack
                 ui-active:bg-white
