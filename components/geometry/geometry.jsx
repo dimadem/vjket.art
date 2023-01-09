@@ -28,13 +28,7 @@ export default function Poly() {
 
   // States
   const [hoveredPoly, hoverPoly] = useState(true);
-  // const [hoveredYear, hoverYear] = useState(true);
-
-  // Colors
-  // const black = "#171717";
-  // const white = "#f1f1f1";
-  // const neutralBlack = "#4B4B4B";
-  // const neutralWhite = "#D9D9D9";
+  const [hoveredYear, hoverYear] = useState(true);
 
   // Animate rotation
   useFrame((state, delta) => {
@@ -66,57 +60,59 @@ export default function Poly() {
   }, []);
 
   useEffect(() => {
-    // each year has a position
+    // position for each year
     const pointsForYears = [
       [1, 1, 1], //a
       [-1, -1, 1], //b
       [-1, 1, -1], //c
       [1, -1, -1], //d
     ];
-    // put the position in the year object
+    // put array with points to year array
     years.forEach((year, index) => {
       year.position = pointsForYears[index];
     });
   }, [years]);
 
   return (
-    <>
-      <group ref={mesh} scale={1.5}>
-        {/* Poly */}
-        <mesh
-          geometry={geometry}
-          position={[0, 0, 0]}
-          onPointerOver={() => hoverPoly(false)}
-          onPointerOut={() => hoverPoly(true)}
-          renderOrder="0"
-        >
-          <MeshDistortMaterial
-            distort={0.2}
-            // speed={1}
-            roughness={0}
-            color={colorPoly}
-            side={DoubleSide}
-            wireframe={hoveredPoly ? true : false}
-          />
-        </mesh>
-        {/* Years */}
-        {years &&
-          years.map(({ slug, title, _id, position }) => (
-            <Text3D
-              key={_id}
-              position={position} // pos of each text
-              font="../Red_Hat_Mono-Light_Regular.json"
-              size={0.15}
-              height={0.02}
-              renderOrder="1"
-              onClick={() => (window.location.href = `/year/${slug}`)} // use next/link
-            >
-              {/* <link href={`/year/${slug}`}>{title}</link> */}
-              {title}
-              <meshBasicMaterial color={colorYear} />
-            </Text3D>
-          ))}
-      </group>
-    </>
+    <group ref={mesh} scale={1.5}>
+      {/* Poly */}
+      <mesh
+        geometry={geometry}
+        position={[0, 0, 0]}
+        onPointerOver={() => hoverPoly(false)}
+        onPointerOut={() => hoverPoly(true)}
+        renderOrder="0"
+      >
+        <MeshDistortMaterial
+          distort={0.2}
+          // speed={1}
+          roughness={0}
+          color={colorPoly}
+          side={DoubleSide}
+          wireframe={hoveredPoly ? true : false}
+        />
+      </mesh>
+      {/* Years */}
+      {years &&
+        years.map(({ slug, title, _id, position }) => (
+          <Text3D
+            key={_id}
+            position={position} // pos of each text
+            font="../Red_Hat_Mono-Light_Regular.json"
+            size={0.2}
+            height={0.07}
+            onClick={() => (window.location.href = `/year/${slug}`)} // use next/link
+            onPointerOver={() => hoverYear(false)}
+            onPointerOut={() => hoverYear(true)}
+          >
+            {/* <link href={`/year/${slug}`}>{title}</link> */}
+            {title}
+            <meshBasicMaterial
+              color={colorYear}
+              wireframe={hoveredYear ? true : false}
+            />
+          </Text3D>
+        ))}
+    </group>
   );
 }

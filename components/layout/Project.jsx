@@ -6,6 +6,7 @@ import { PortableText } from "@portabletext/react";
 import Vimeo from "@u-wave/react-vimeo";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
+import ReactPlayer from "react-player";
 
 export default function Project({
   _id /* string */,
@@ -20,6 +21,7 @@ export default function Project({
   credits /* OBJECT */,
   gallery /* CAROUSEL IMAGES */,
 }) {
+  // console.log("Description:", description);
   const ImageComponent = (description) => {
     return (
       <div className="w-1/2 justify-center py-2 px-1">
@@ -42,11 +44,22 @@ export default function Project({
       />
     );
   };
+  const SoundcloudComponent = (description) => {
+    return (
+      <ReactPlayer
+        className="pt-2"
+        width="100%"
+        key={description.value._key}
+        url={description.value.url}
+      />
+    );
+  };
 
   const componentsDescription = {
     types: {
       image: ImageComponent,
       vimeo: VimeoComponent,
+      soundcloud: SoundcloudComponent,
       // Any other custom types you have in your content
       // Examples: mapLocation, contactForm, code, featuredProjects, latestNews, etc.
     },

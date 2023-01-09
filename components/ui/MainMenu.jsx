@@ -142,7 +142,7 @@ export default function MainMenu() {
             ui-active:dark:bg-black 
             ui-active:dark:text-neutralWhite"
             >
-              <Link href="https://soundcloud.com/ms-upbringer">
+              <Link href="https://soundcloud.com/vjket">
                 <ImSoundcloud />
               </Link>
             </Menu.Item>
