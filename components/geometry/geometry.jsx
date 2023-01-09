@@ -1,11 +1,10 @@
-import { BufferGeometry, Vector3, DoubleSide, CameraHelper } from "three";
-import Link from "next/link";
 import { useRef, useMemo, useContext, useState, useEffect } from "react";
-import { useFrame, extend } from "@react-three/fiber";
-import { MeshDistortMaterial, Text3D, useHelper } from "@react-three/drei";
 import { MenuContext } from "../../context/menu.context";
-// extend({ Link });
 import { useTheme } from "next-themes";
+import { BufferGeometry, Vector3, DoubleSide } from "three";
+import Link from "next/link";
+import { useFrame } from "@react-three/fiber";
+import { MeshDistortMaterial, Text3D } from "@react-three/drei";
 
 export default function Poly() {
   const { theme } = useTheme();
@@ -21,12 +20,6 @@ export default function Poly() {
     if (theme == "dark") setColorYear("#f1f1f1");
   }, [theme]);
 
-  // const height = 1080;
-  // const black = "#171717";
-  // const white = "#f1f1f1";
-  // const neutralBlack = "#4B4B4B";
-  // const neutralWhite = "#D9D9D9";
-
   // get data from context
   const { menu, setMenu } = useContext(MenuContext);
   const { disciplines, years } = menu;
@@ -39,12 +32,12 @@ export default function Poly() {
   const [hoveredYear, hoverYear] = useState(true);
 
   // Colors
-  const black = "#171717";
-  const white = "#f1f1f1";
-  const neutralBlack = "#4B4B4B";
-  const neutralWhite = "#D9D9D9";
+  // const black = "#171717";
+  // const white = "#f1f1f1";
+  // const neutralBlack = "#4B4B4B";
+  // const neutralWhite = "#D9D9D9";
 
-  // Animation rotation
+  // Animate rotation
   useFrame((state, delta) => {
     mesh.current.rotation.y += delta / 10;
   }, []);

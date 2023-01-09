@@ -2,8 +2,11 @@ import CenterFrame from "../components/layout/CenterFrame";
 import { withLayoutMain } from "../components/layout/LayoutMain";
 import { client } from "../lib/sanity.server";
 import { groq } from "next-sanity";
+import { TypeAnimation } from "react-type-animation";
 
 function aboutme() {
+  // speed cursor
+  const cursorSpeed = 70;
   return (
     <CenterFrame>
       <div className="page flex flex-col font-redhatmono dark:text-white">
@@ -36,28 +39,68 @@ function aboutme() {
           />
         </div>
         <div className="font-thin text-2xl py-7">
-          <p className="text-justify w-fit">
-            New media artist and researcher in the field of digital-mechanic art
-            and human-computer interaction.
+          <TypeAnimation
+            sequence={[
+              `New media artist and researcher in the field of digital-mechanic art and human-computer interaction. 
+
+              `,
+            ]}
+            speed={cursorSpeed} // Custom Speed from 1-99 - Default Speed: 40
+            wrapper="p"
+            cursor={false}
+            className={"text-justify"}
+          />
+          <p>
             <br />
             <br />
-            Working with diverse materials and formats, artist repeatedly
-            investigates, traces and questions the degrees of freedom of
-            unstable borders between seemingly all well known oppositions
-            forming the very base dichotomies:
+          </p>
+          <TypeAnimation
+            sequence={[
+              `
+            Working with diverse materials and formats, artist repeatedly investigates, traces and questions the degrees of freedom of unstable borders between seemingly all well known oppositions forming the very base dichotomies:
+`,
+            ]}
+            speed={cursorSpeed} // Custom Speed from 1-99 - Default Speed: 40
+            wrapper="p"
+            cursor={false}
+            className={"text-justify"}
+          />
+          <p>
             <br />
             <br />
+          </p>
+          <TypeAnimation
+            sequence={[
+              `
             random/algorithmic, natural/artificial, animated/mechanical,
             real/imaginary, analytic/synthetic, genuine/counterfeit,
             universal/particular, narrative/structural, inside/outside,
+`,
+            ]}
+            speed={cursorSpeed} // Custom Speed from 1-99 - Default Speed: 40
+            wrapper="p"
+            repeat={0}
+            cursor={false}
+            className={"text-justify"}
+          />
+          <p>
             <br />
             <br />
+          </p>
+          <TypeAnimation
+            sequence={[
+              `
             that constitute the hard core of predominant mental habits of the
             day as if trying to discover or produce or to discover the way to
             produce (to hack, “hack the lack that lacks the hack”) a new
             “cyborg” body of sense able to break free from all too narrow throat
-            of binary code.
-          </p>
+            of binary code.`,
+            ]}
+            speed={cursorSpeed} // Custom Speed from 1-99 - Default Speed: 40
+            wrapper="p"
+            repeat={0}
+            className={"text-justify"}
+          />
         </div>
       </div>
     </CenterFrame>
