@@ -100,7 +100,7 @@ export default function Poly() {
         years.map(({ slug, title, _id, position }) => (
           <Text3D
             key={_id}
-            position={position} // pos of each text
+            position={position} // pos of each year
             font="../Red_Hat_Mono-Light_Regular.json"
             size={0.2}
             height={0.07}
@@ -108,7 +108,6 @@ export default function Poly() {
             onPointerOver={() => hoverYear(false)}
             onPointerOut={() => hoverYear(true)}
           >
-            {/* <link href={`/year/${slug}`}>{title}</link> */}
             {title}
             <meshBasicMaterial
               color={colorYear}
