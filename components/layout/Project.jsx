@@ -47,8 +47,9 @@ export default function Project({
   const SoundcloudComponent = (description) => {
     return (
       <ReactPlayer
-        className="pt-2"
+        className="mt-4 grayscale"
         width="100%"
+        height="30%"
         key={description.value._key}
         url={description.value.url}
       />
