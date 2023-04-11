@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { ThemeProvider } from "next-themes";
-import { Red_Hat_Mono } from "@next/font/google";
+import { Red_Hat_Mono } from "next/font/google";
 import { MenuContextProvider } from "../context/menu.context";
 import "../styles/globals.css";
 

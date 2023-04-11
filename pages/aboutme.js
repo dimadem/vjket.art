@@ -1,5 +1,5 @@
-import CenterFrame from "../components/layout/CenterFrame";
-import { withLayoutMain } from "../components/layout/LayoutMain";
+import CenterFrame from "../layout/CenterFrame.layout";
+import { withLayoutMain } from "../layout/LayoutMain.layout";
 import { client } from "../lib/sanity.server";
 import { groq } from "next-sanity";
 import { TypeAnimation } from "react-type-animation";
@@ -74,8 +74,7 @@ function aboutme() {
               `
             random/algorithmic, natural/artificial, animated/mechanical,
             real/imaginary, analytic/synthetic, genuine/counterfeit,
-            universal/particular, narrative/structural, inside/outside,
-`,
+            universal/particular, narrative/structural, inside/outside,`,
             ]}
             speed={cursorSpeed} // Custom Speed from 1-99 - Default Speed: 40
             wrapper="p"

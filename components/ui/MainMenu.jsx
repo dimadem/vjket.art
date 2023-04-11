@@ -16,7 +16,22 @@ export default function MainMenu() {
         <BsList size="40" />
         <span className="sidebar-tooltip group-hover:scale-100">menu</span>
       </Menu.Button>
-      <Menu.Items className="absolute z-10 ml-16 pt-14 pb-3 w-56 h-screen font-redhatmono font-thin text-lg bg-black outline-none dark:bg-white">
+      <Menu.Items
+        className="
+      absolute 
+      z-10 
+      ml-16 
+      pt-14 
+      pb-3 
+      w-56 
+      h-screen 
+      font-redhatmono 
+      font-thin 
+      text-lg 
+      bg-black
+      outline-none 
+      dark:bg-white"
+      >
         <div className="flex flex-col h-full">
           {/* home */}
           <Menu.Item

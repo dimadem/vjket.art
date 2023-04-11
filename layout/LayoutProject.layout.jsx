@@ -1,4 +1,4 @@
-import Sidebar from "./Sidebar";
+import Sidebar from "../components/Sidebar.component";
 
 const Layout = ({ children }) => {
   return (
@@ -8,8 +8,7 @@ const Layout = ({ children }) => {
     </div>
   );
 };
-
-export const withLayoutMain = (Component) => {
+export const withLayoutProject = (Component) => {
   return function withLayoutComponent(props) {
     return (
       <Layout>

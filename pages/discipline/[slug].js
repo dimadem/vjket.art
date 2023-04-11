@@ -1,9 +1,9 @@
 import { client } from "../../lib/sanity.server";
 import { groq } from "next-sanity";
-import Project from "../../components/layout/Project";
-import CenterFrame from "../../components/layout/CenterFrame";
-import { withLayoutProject } from "../../components/layout/LayoutProject";
-import InfoBar from "../../components/layout/InfoBar";
+import Project from "../../components/project/Project.component";
+import CenterFrame from "../../layout/CenterFrame.layout";
+import { withLayoutProject } from "../../layout/LayoutProject.layout";
+import InfoBar from "../../components/InfoBar.component";
 
 export async function getStaticPaths() {
   const disciplineQuery = groq`*[_type=="discipline"]{"slug": slug.current}`;
@@ -20,6 +20,7 @@ export async function getStaticPaths() {
   };
 }
 
+//! This is the page that is rendered when a user clicks on a discipline in the MainMenu
 export async function getStaticProps({ params: { slug } }) {
   //MENU ITEMS
   const disciplines = await client.fetch(
@@ -29,6 +30,7 @@ export async function getStaticProps({ params: { slug } }) {
     groq`*[_type == "year"]{title, "slug": slug.current, _id} | order(title desc)`
   );
 
+  // fetch projects
   const disciplineQuery = groq`*[_type=="discipline" && slug.current == "${slug}"]{
     _id,
     title,
@@ -46,7 +48,7 @@ export async function getStaticProps({ params: { slug } }) {
       gallery
     } | order(date desc)
   }`;
-
+  console.log(disciplineQuery);
   const data = await client.fetch(disciplineQuery);
   const projects = await data[0].projects;
 

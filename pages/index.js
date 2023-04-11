@@ -1,5 +1,5 @@
-import PolyMenu from "../components/layout/PolyMenu";
-import { withLayoutMain } from "../components/layout/LayoutMain";
+import PolyMenu from "../components/PolyMenu.component";
+import { withLayoutMain } from "../layout/LayoutMain.layout";
 import { client } from "../lib/sanity.server";
 import { groq } from "next-sanity";
 
@@ -17,6 +17,8 @@ export async function getStaticProps() {
   const years = await client.fetch(
     groq`*[_type == "year"]{title, "slug": slug.current, _id} | order(title desc)`
   );
+  //testing
+  // console.log(disciplines, years);
 
   return {
     props: {

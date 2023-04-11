@@ -1,9 +1,9 @@
 import { client } from "../../lib/sanity.server";
 import { groq } from "next-sanity";
-import Project from "../../components/layout/Project";
-import CenterFrame from "../../components/layout/CenterFrame";
-import { withLayoutProject } from "../../components/layout/LayoutProject";
-import InfoBar from "../../components/layout/InfoBar";
+import { withLayoutProject } from "../../layout/LayoutProject.layout";
+import CenterFrame from "../../layout/CenterFrame.layout";
+import InfoBar from "../../components/InfoBar.component";
+import Project from "../../components/project/Project.component";
 
 export async function getStaticPaths() {
   const disciplineQuery = groq`*[_type=="year"]{"slug": slug.current}`;
@@ -48,7 +48,6 @@ export async function getStaticProps({ params: { slug } }) {
 
   const data = await client.fetch(disciplineQuery);
   const projects = await data[0].projects;
-
   return {
     props: { projects, disciplines, years },
   };

@@ -1,6 +1,6 @@
-import MainMenu from "../ui/MainMenu";
-import PlaySoundButton from "../ui/PlaySoundButton";
-import SetThemeButton from "../ui/SetThemeButton";
+import MainMenu from "./ui/MainMenu";
+import PlaySoundButton from "./ui/PlaySoundButton";
+import SetThemeButton from "./ui/SetThemeButton";
 
 export default function Sidebar() {
   return (
