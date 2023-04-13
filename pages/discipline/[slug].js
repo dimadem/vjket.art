@@ -61,7 +61,7 @@ function ProjectsPage({ projects }) {
   return (
     <>
       <CenterFrame>
-        <div className="flex flex-col h-fit min-w-full mb-2 divide-y divide-dashed divide-black dark:divide-neutralWhite">
+        <div className="flex flex-col h-fit mb-2 divide-y divide-dashed divide-black dark:divide-neutralWhite">
           {projects &&
             projects.map(
               ({

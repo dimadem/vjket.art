@@ -9,29 +9,6 @@ video {
 }
 
 @layer components {
-  .sidebar-icon {
-    @apply relative flex items-center justify-center 
-            h-12 w-12 mt-2 mb-2 mx-2 
-            hover:bg-neutralWhite invert
-            transition-all duration-300 ease-linear
-            cursor-pointer dark:invert dark:hover:bg-neutralBlack;
-  }
-
-  .social-icon {
-    @apply relative flex items-center justify-center 
-    h-12 w-12 mt-2 mb-2 mx-auto invert 
-  hover:bg-neutralWhite 
-    transition-all duration-300 ease-linear
-    cursor-pointer hover:dark:bg-black;
-  }
-
-  .sidebar-tooltip {
-    @apply absolute w-auto p-2 m-2 min-w-max left-14
-    text-white bg-neutralBlack text-xs
-    font-redhatmono font-light
-    transition-all duration-100 scale-0 origin-left dark:text-black dark:bg-neutralWhite;
-  }
-
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
@@ -40,5 +17,75 @@ video {
   .scrollbar-hide {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
+  }
+
+  .sidebar-icon {
+    @apply relative 
+    flex 
+    items-center justify-center 
+    h-12 w-12 
+    mt-2 mb-2 mx-2 
+  hover:bg-neutralWhite 
+    invert
+    transition-all 
+    duration-300 
+    ease-linear
+    cursor-pointer 
+    dark:invert 
+    dark:hover:bg-neutralBlack;
+  }
+
+  .social-icon {
+    @apply relative 
+    flex 
+    items-center 
+    justify-center 
+    h-12 
+    w-12 
+    mt-2 mb-2 
+    mx-auto 
+    invert 
+  hover:bg-neutralWhite 
+    transition-all 
+    duration-300 
+    ease-linear
+    cursor-pointer 
+    hover:dark:bg-black;
+  }
+
+  .sidebar-tooltip {
+    @apply absolute 
+    w-auto 
+    p-2 
+    m-2 
+    min-w-max 
+    left-14
+    font-redhatmono 
+    font-light
+    text-xs
+    text-white 
+    bg-neutralBlack 
+    transition-all 
+    duration-100 
+    scale-0 
+    origin-left 
+    dark:text-black 
+    dark:bg-neutralWhite;
+  }
+
+  .menuItem {
+    @apply cursor-default 
+    select-none 
+    ui-not-active:text-neutralWhite
+    ui-not-active:dark:text-neutralBlack
+    ui-active:bg-white
+    ui-active:text-neutralBlack
+    ui-active:dark:bg-black
+    ui-active:dark:text-neutralWhite;
+  }
+}
+@supports (-webkit-touch-callout: none) {
+  .h-screen {
+    height: -webkit-fill-available;
   }
 }

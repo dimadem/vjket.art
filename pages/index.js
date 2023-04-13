@@ -3,12 +3,6 @@ import { withLayoutMain } from "../layout/LayoutMain.layout";
 import { client } from "../lib/sanity.server";
 import { groq } from "next-sanity";
 
-function Home() {
-  return <PolyMenu />;
-}
-
-export default withLayoutMain(Home);
-
 //fetching data for MainMenu
 export async function getStaticProps() {
   const disciplines = await client.fetch(
@@ -27,3 +21,9 @@ export async function getStaticProps() {
     },
   };
 }
+
+function Home() {
+  return <PolyMenu />;
+}
+
+export default withLayoutMain(Home);

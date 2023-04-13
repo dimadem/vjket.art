@@ -4,7 +4,7 @@ import { Red_Hat_Mono } from "next/font/google";
 import { MenuContextProvider } from "../context/menu.context";
 import "../styles/globals.css";
 
-// add font in Tailwind style
+// add font
 const redhatmono = Red_Hat_Mono({
   subsets: ["latin"],
   variable: "--font-redhatmono",

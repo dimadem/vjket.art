@@ -3,6 +3,9 @@ import { withLayoutMain } from "../layout/LayoutMain.layout";
 import { client } from "../lib/sanity.server";
 import { groq } from "next-sanity";
 import { TypeAnimation } from "react-type-animation";
+//todo
+//1 -- text animation fix on different screens
+//2 -- adapt to mobile portrait & landscape
 
 function aboutme() {
   // speed cursor
@@ -10,12 +13,14 @@ function aboutme() {
   return (
     <CenterFrame>
       <div className="page flex flex-col font-redhatmono dark:text-white">
+        {/* Artist Name */}
         <div className="flex flex-row justify-around">
           <h1 className="w-1/2 font-normal text-5xl text-center">
             KATERYNA PITS
           </h1>
           <h1 className="w-1/2 font-normal text-5xl text-center">VJkET</h1>
         </div>
+        {/* Kate portraits */}
         <div className="flex flex-row py-16 h-fit justify-around">
           <video
             muted
@@ -38,6 +43,7 @@ function aboutme() {
             type="video/mp4"
           />
         </div>
+        {/* Artist Bio */}
         <div className="font-thin text-2xl py-7">
           <TypeAnimation
             sequence={[

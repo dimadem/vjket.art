@@ -1,6 +1,6 @@
 export default function InfoBar({ discipline, year }) {
   return (
-    <div className="flex order-last flex-col bg-white h-screen justify-evenly items-center w-1/12 dark:bg-black dark:text-neutralWhite">
+    <div className="flex flex-col bg-white h-screen justify-evenly items-center w-1/5 dark:bg-black dark:text-neutralWhite">
       {discipline &&
         discipline.split("").map((letter, key) => {
           return (

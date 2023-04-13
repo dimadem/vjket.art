@@ -4,6 +4,7 @@ import Vimeo from "@u-wave/react-vimeo";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import ReactPlayer from "react-player";
+import Image from "next/image";
 
 export default function DescritpionComponent({
   description,

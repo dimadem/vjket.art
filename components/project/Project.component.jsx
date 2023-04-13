@@ -22,7 +22,7 @@ export default function Project({
   return (
     <div
       key={_id}
-      className="flex flex-col h-fit pt-4 justify-start mx-3 my-1 font-redhatmono"
+      className="flex flex-col h-fit pt-4 justify-start mx-3 my-1 font-redhatmono bg-neutralWhite dark:bg-neutralBlack rounded-sm"
     >
       <HeaderComponent title={title} disciplines={disciplines} />
 
