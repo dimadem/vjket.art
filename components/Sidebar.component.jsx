@@ -1,11 +1,14 @@
 import MainMenu from "./MainMenu.component";
 import PlaySoundButton from "./ui/PlaySoundButton";
 import SetThemeButton from "./ui/SetThemeButton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useResize } from "../hooks/useResize.hook";
 
 export default function SideBar() {
-  const [resize, setResize] = useState({ width: undefined, height: undefined });
+  const [resize, setResize] = useState({ width: Number, height: Number });
+  useEffect(() => {
+    setResize({ width: window.innerWidth, height: window.innerHeight });
+  }, []);
   useResize(setResize);
 
   return (

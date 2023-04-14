@@ -1,9 +1,12 @@
 import SideBar from "../components/SideBar.component";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useResize } from "../hooks/useResize.hook";
 
 const Layout = ({ children }) => {
-  const [resize, setResize] = useState({ width: undefined, height: undefined });
+  const [resize, setResize] = useState({ width: Number, height: Number });
+  useEffect(() => {
+    setResize({ width: window.innerWidth, height: window.innerHeight });
+  }, []);
   useResize(setResize);
 
   return (

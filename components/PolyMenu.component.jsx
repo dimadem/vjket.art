@@ -23,10 +23,9 @@ export default function PolyMenu() {
   }, [theme]);
 
   return (
-    // <div className="">
     <Canvas
       gl={{ antialias: false }}
-      style={{ height: "100vh", width: "100%" }}
+      style={{ height: "screen", width: "100%" }}
     >
       {/* performance data */}
       {/* <Perf position="bottom-left" /> */}
@@ -57,6 +56,5 @@ export default function PolyMenu() {
         <Vignette offset={0.1} darkness={0.6} />
       </EffectComposer>
     </Canvas>
-    // </div>
   );
 }

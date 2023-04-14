@@ -8,13 +8,13 @@ export default function ImageComponent({ mainImage }) {
     <div className="w-1/2">
       <Image
         className="
-            rounded-sm
+           rounded-sm
+           aspect-video
            bg-neutralBlack
            dark:bg-neutralWhite
            "
-        {...imageProps}
         alt="mainImage"
-        style={{ width: "50%", height: "auto" }}
+        {...imageProps}
       />
     </div>
   );

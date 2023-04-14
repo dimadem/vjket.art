@@ -1,6 +1,6 @@
 export default function CardComponent({ location, date, technologies }) {
   return (
-    <ul className="w-1/2 flex flex-col justify-around">
+    <ul className="w-full p-2 sm:p-0 sm:w-1/2 flex flex-col justify-around">
       <li
         className="
       font-normal
