@@ -25,7 +25,7 @@ export default function PolyMenu() {
   return (
     <Canvas
       gl={{ antialias: false }}
-      style={{ height: "screen", width: "100%" }}
+      style={{ height: "100vh", width: "100%" }}
     >
       {/* performance data */}
       {/* <Perf position="bottom-left" /> */}

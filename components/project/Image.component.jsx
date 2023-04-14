@@ -8,8 +8,11 @@ export default function ImageComponent({ mainImage }) {
     <div className="w-1/2">
       <Image
         className="
+           select-none
            rounded-sm
+           p-2
            aspect-video
+            object-cover  
            bg-neutralBlack
            dark:bg-neutralWhite
            "

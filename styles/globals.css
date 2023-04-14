@@ -54,21 +54,21 @@ video {
   }
 
   .sidebar-tooltip {
-    @apply absolute 
-    w-auto 
+    @apply invisible sm:visible select-none absolute
+    w-fit
+    h-fit
     p-2 
-    m-2 
-    min-w-max 
-    left-14
+    m-2
     font-redhatmono 
     font-light
     text-xs
-    text-white 
-    bg-neutralBlack 
+    text-center
     transition-all 
     duration-100 
-    scale-0 
+    scale-0
     origin-left 
+    text-white 
+    bg-neutralBlack 
     dark:text-black 
     dark:bg-neutralWhite;
   }
@@ -82,6 +82,38 @@ video {
     ui-active:text-neutralBlack
     ui-active:dark:bg-black
     ui-active:dark:text-neutralWhite;
+  }
+  .projectCard {
+    @apply container 
+    justify-start 
+    w-[350px]
+    p-4 
+    my-4
+    mx-20
+    md:w-[900px] 
+    md:p-8 
+    border-b-2 border-neutralBlack rounded-sm
+    /* sm:w-full ??? */
+    shadow-inner
+  bg-neutralWhite dark:bg-neutralBlack;
+  }
+  .cardListItem {
+    @apply select-none 
+    font-medium
+    text-lg 
+  text-neutralBlack
+  dark:text-white
+  tracking-widest;
+  }
+  .cardListData {
+    @apply select-none 
+    font-extralight
+    text-neutralBlack
+    dark:text-white;
+  }
+
+  .infoBar {
+    @apply text-4xl font-semibold opacity-40;
   }
 }
 @supports (-webkit-touch-callout: none) {

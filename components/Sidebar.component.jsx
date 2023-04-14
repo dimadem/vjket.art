@@ -4,7 +4,7 @@ import SetThemeButton from "./ui/SetThemeButton";
 import { useState, useEffect } from "react";
 import { useResize } from "../hooks/useResize.hook";
 
-export default function SideBar() {
+const SideBar = () => {
   const [resize, setResize] = useState({ width: Number, height: Number });
   useEffect(() => {
     setResize({ width: window.innerWidth, height: window.innerHeight });
@@ -15,7 +15,7 @@ export default function SideBar() {
     return (
       <div className="flex flex-col justify-between md:flex-none basis-16 bg-black dark:bg-white">
         <MainMenu />
-        <div>
+        <div className="">
           <PlaySoundButton />
           <SetThemeButton />
         </div>
@@ -32,4 +32,5 @@ export default function SideBar() {
       </div>
     );
   }
-}
+};
+export default SideBar;

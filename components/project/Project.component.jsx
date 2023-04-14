@@ -26,12 +26,8 @@ export default function Project({
   }, []);
   useResize(setResize);
 
-  if (!Project) return <div />;
   return (
-    <div
-      key={_id}
-      className="flex flex-col h-fit pt-4 justify-start mx-3 my-1 font-redhatmono bg-neutralWhite dark:bg-neutralBlack rounded-sm"
-    >
+    <div key={_id} className="projectCard">
       <HeaderComponent title={title} disciplines={disciplines} />
       <div className="flex flex-row justify-center items-stretch h-auto space-x-2 w-fit">
         {/* mainImage */}
@@ -43,17 +39,19 @@ export default function Project({
           technologies={technologies}
         />
       </div>
-      {/* project description */}
-      <Disclosure>
-        <ShowDescriptionButton />
-        <Disclosure.Panel className="p-4 bg-neutralWhite dark:bg-neutralBlack">
-          <DescritpionComponent
-            description={description}
-            credits={credits}
-            gallery={gallery}
-          />
-        </Disclosure.Panel>
-      </Disclosure>
+      <div className="container text-end h-fit w-full">
+        {/* project description */}
+        <Disclosure>
+          <ShowDescriptionButton />
+          <Disclosure.Panel className="bg-neutralWhite dark:bg-neutralBlack">
+            <DescritpionComponent
+              description={description}
+              credits={credits}
+              gallery={gallery}
+            />
+          </Disclosure.Panel>
+        </Disclosure>
+      </div>
     </div>
   );
 }

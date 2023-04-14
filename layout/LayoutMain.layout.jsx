@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useResize } from "../hooks/useResize.hook";
-import SideBar from "../components/SideBar.component";
+import SideBar from "../components/Sidebar.component";
 
 const Layout = ({ children }) => {
   const [resize, setResize] = useState({ width: Number, height: Number });
@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
     );
   } else {
     return (
-      <div className="flex flex-col w-full h-screen md:hidden">
+      <div className="relative flex flex-col w-full h-screen md:hidden">
         <SideBar />
         {children}
       </div>

@@ -57,37 +57,35 @@ function ProjectsPage({ projects }) {
   return (
     <>
       <CenterFrame>
-        <div className="flex flex-col h-fit w-full mb-2 divide-y divide-dashed divide-black dark:divide-neutralWhite">
-          {projects?.map(
-            ({
-              _id /* string */,
-              title /* string */,
-              slug /* type: slug, string: slug.current */,
-              mainImage /* IMAGE */,
-              disciplines /* OBJECT  */,
-              date /* YYYY-MM-DD */,
-              location /* string */,
-              technologies /* OBJECT */,
-              description /* OBJECT */,
-              credits /* OBJECT */,
-            }) => {
-              return (
-                <Project
-                  key={_id}
-                  title={title}
-                  slug={slug}
-                  mainImage={mainImage}
-                  disciplines={disciplines[0].title}
-                  date={date}
-                  location={location}
-                  technologies={technologies[0].title}
-                  description={description}
-                  credits={credits}
-                />
-              );
-            }
-          )}
-        </div>
+        {projects?.map(
+          ({
+            _id /* string */,
+            title /* string */,
+            slug /* type: slug, string: slug.current */,
+            mainImage /* IMAGE */,
+            disciplines /* OBJECT  */,
+            date /* YYYY-MM-DD */,
+            location /* string */,
+            technologies /* OBJECT */,
+            description /* OBJECT */,
+            credits /* OBJECT */,
+          }) => {
+            return (
+              <Project
+                key={_id}
+                title={title}
+                slug={slug}
+                mainImage={mainImage}
+                disciplines={disciplines[0].title}
+                date={date}
+                location={location}
+                technologies={technologies[0].title}
+                description={description}
+                credits={credits}
+              />
+            );
+          }
+        )}
       </CenterFrame>
       <InfoBar year={projects && projects[0]?.date} />
     </>

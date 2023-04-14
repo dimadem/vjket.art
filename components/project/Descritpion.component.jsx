@@ -55,7 +55,9 @@ export default function DescritpionComponent({
       // Examples: mapLocation, contactForm, code, featuredProjects, latestNews, etc.
     },
     block: {
-      normal: ({ children }) => <p className="text-justify pt-1">{children}</p>,
+      normal: ({ children }) => (
+        <p className="text-justify pt-1 h-full">{children}</p>
+      ),
       h1: ({ children }) => <h1 className="text-2xl">{children}</h1>,
       h2: ({ children }) => <h2 className="text-xl">{children}</h2>,
     },
@@ -110,6 +112,7 @@ export default function DescritpionComponent({
   return (
     <>
       <PortableText value={description} components={componentsDescription} />
+      {/* credits */}
       <PortableText value={credits} components={componentsCredits} />
       {/* image gallery */}
       <div ref={sliderRef} className="keen-slider pt-4">

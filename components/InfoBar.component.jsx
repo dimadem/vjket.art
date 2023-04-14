@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useResize } from "../hooks/useResize.hook";
 
 export default function InfoBar({ discipline, year }) {
-  const [resize, setResize] = useState({ width: 1280, height: undefined });
+  const [resize, setResize] = useState({ width: Number, height: Number });
+  useEffect(() => {
+    setResize({ width: window.innerWidth, height: window.innerHeight });
+  }, []);
   useResize(setResize);
 
   return (
@@ -10,6 +13,7 @@ export default function InfoBar({ discipline, year }) {
       {resize.width > 640 ? (
         <div
           className="
+          select-none
     flex 
     flex-col 
     h-screen 
@@ -21,7 +25,7 @@ export default function InfoBar({ discipline, year }) {
           {discipline &&
             discipline.split("").map((letter, key) => {
               return (
-                <p key={key} className="text-3xl">
+                <p key={key} className="infoBar">
                   {letter}
                 </p>
               );
@@ -32,7 +36,7 @@ export default function InfoBar({ discipline, year }) {
               .split("")
               .map((letter, key) => {
                 return (
-                  <p key={key} className="text-3xl">
+                  <p key={key} className="infoBar">
                     {letter}
                   </p>
                 );

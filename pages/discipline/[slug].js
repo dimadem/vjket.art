@@ -20,18 +20,16 @@ export async function getStaticPaths() {
   };
 }
 
-//! This is the page that is rendered when a user clicks on a discipline in the MainMenu
+//! page rendered when a user clicks on a discipline in the MainMenu
 export async function getStaticProps({ params: { slug } }) {
   //MENU ITEMS
-  const disciplines = await client.fetch(
-    groq`*[_type == "discipline"]{title, "slug": slug.current, _id} | order(asc)`
-  );
-  const years = await client.fetch(
-    groq`*[_type == "year"]{title, "slug": slug.current, _id} | order(title desc)`
-  );
+  const disciplinesGroq = groq`*[_type == "discipline"]{title, "slug": slug.current, _id} | order(asc)`;
+  const yearsGroq = groq`*[_type == "year"]{title, "slug": slug.current, _id} | order(title desc)`;
+  const disciplines = await client.fetch(disciplinesGroq);
+  const years = await client.fetch(yearsGroq);
 
   // fetch projects
-  const disciplineQuery = groq`*[_type=="discipline" && slug.current == "${slug}"]{
+  const projectsQuery = groq`*[_type=="discipline" && slug.current == "${slug}"]{
     _id,
     title,
   "projects": *[_type == "project" && references(^._id) && !(_id in path("drafts.**"))]{
@@ -48,8 +46,7 @@ export async function getStaticProps({ params: { slug } }) {
       gallery
     } | order(date desc)
   }`;
-  console.log(disciplineQuery);
-  const data = await client.fetch(disciplineQuery);
+  const data = await client.fetch(projectsQuery);
   const projects = await data[0].projects;
 
   return {
@@ -58,52 +55,45 @@ export async function getStaticProps({ params: { slug } }) {
 }
 
 function ProjectsPage({ projects }) {
+  const disciplineData = projects && projects[0]?.disciplines[0]?.title;
+
   return (
     <>
       <CenterFrame>
-        <div
-          className="
-        flex 
-        flex-col 
-        h-fit 
-        mb-2 
-        divide-y divide-dashed divide-black dark:divide-neutralWhite"
-        >
-          {projects &&
-            projects.map(
-              ({
-                _id /* string */,
-                title /* string */,
-                slug /* type: slug, string: slug.current */,
-                mainImage /* IMAGE */,
-                disciplines /* OBJECT  */,
-                date /* YYYY-MM-DD */,
-                location /* string */,
-                technologies /* OBJECT */,
-                description /* OBJECT */,
-                credits /* OBJECT */,
-                gallery /* GALLERY IMAGES */,
-              }) => {
-                return (
-                  <Project
-                    key={_id}
-                    title={title}
-                    slug={slug}
-                    mainImage={mainImage}
-                    disciplines={disciplines[0].title}
-                    date={date}
-                    location={location}
-                    technologies={technologies[0].title}
-                    description={description}
-                    credits={credits}
-                    gallery={gallery}
-                  />
-                );
-              }
-            )}
-        </div>
+        {projects &&
+          projects.map(
+            ({
+              _id /* string */,
+              title /* string */,
+              slug /* type: slug, string: slug.current */,
+              mainImage /* IMAGE */,
+              disciplines /* OBJECT  */,
+              date /* YYYY-MM-DD */,
+              location /* string */,
+              technologies /* OBJECT */,
+              description /* OBJECT */,
+              credits /* OBJECT */,
+              gallery /* GALLERY IMAGES */,
+            }) => {
+              return (
+                <Project
+                  key={_id}
+                  title={title}
+                  slug={slug}
+                  mainImage={mainImage}
+                  disciplines={disciplines[0].title}
+                  date={date}
+                  location={location}
+                  technologies={technologies[0].title}
+                  description={description}
+                  credits={credits}
+                  gallery={gallery}
+                />
+              );
+            }
+          )}
       </CenterFrame>
-      <InfoBar discipline={projects && projects[0]?.disciplines[0]?.title} />
+      <InfoBar discipline={disciplineData} />
     </>
   );
 }

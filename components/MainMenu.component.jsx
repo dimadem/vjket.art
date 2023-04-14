@@ -11,121 +11,85 @@ export default function MainMenu() {
   const { menu, setMenu } = useContext(MenuContext);
   const { disciplines, years } = menu;
 
-  // return (
-  //   <Menu>
-  //     <Menu.Button className="sidebar-icon group">
-  //       <BsList size="40" />
-  //       <span className="sidebar-tooltip group-hover:scale-100">menu</span>
-  //     </Menu.Button>
-  //     <Menu.Items className="absolute z-10 ml-16 pt-14 pb-3 w-56 h-full font-redhatmono outline-none bg-black dark:bg-white">
-  //       <div className="flex flex-col justify-start h-full">
-  //         {/* home */}
-  //         <Menu.Item className="text-xl font-bold py-2 px-3 menuItem">
-  //           <Link href="/">home</Link>
-  //         </Menu.Item>
-  //         {/* about me */}
-  //         <Menu.Item className="text-xl font-bold py-2 px-3 menuItem">
-  //           <Link href="/aboutme">about me</Link>
-  //         </Menu.Item>
-  //         {/* menu */}
-  //         {disciplines &&
-  //           disciplines.map(({ slug, title, _id }) => (
-  //             <Menu.Item key={_id} className="text-xl py-2 px-1 menuItem">
-  //               <Link href={`/discipline/${slug}`}>{title}</Link>
-  //             </Menu.Item>
-  //           ))}
-  //         {/* years */}
-  //         <div className="pl-5 pr-8 flex flex-nowrap mt-8">
-  //           <div className="flex overflow-y-auto scrollbar-hide overscroll-contain">
-  //             {years &&
-  //               years.map(({ slug, title, _id }) => (
-  //                 <Menu.Item key={_id} className="text-lg px-2 menuItem">
-  //                   <Link href={`/year/${slug}`}>{title}</Link>
-  //                 </Menu.Item>
-  //               ))}
-  //           </div>
-  //         </div>
-  //         {/* socials */}
-  //         <div className="relative flex justify-evenly mt-auto">
-  //           <Menu.Item className="p-2 menuItem">
-  //             <Link href="https://vimeo.com/vjket">
-  //               <BsVimeo />
-  //             </Link>
-  //           </Menu.Item>
-  //           <Menu.Item className="p-2 menuItem">
-  //             <Link href="https://www.facebook.com/VJkET">
-  //               <BsFacebook />
-  //             </Link>
-  //           </Menu.Item>
-  //           <Menu.Item className="p-2 menuItem">
-  //             <Link href="https://soundcloud.com/vjket">
-  //               <ImSoundcloud />
-  //             </Link>
-  //           </Menu.Item>
-  //         </div>
-  //       </div>
-  //     </Menu.Items>
-  //   </Menu>
   return (
     <Popover>
       <Popover.Button className="sidebar-icon group">
         <BsList size="40" />
-        <span className="sidebar-tooltip group-hover:scale-100">menu</span>
+        {/* <span className="sidebar-tooltip group-hover:scale-100">menu</span> */}
       </Popover.Button>
-      <Popover.Panel className="absolute z-10 ml-16 pt-14 pb-3 w-56 h-full font-redhatmono outline-none bg-black dark:bg-white">
-        <div className="flex flex-col justify-start h-full">
-          {/* home */}
-          <Link className="text-xl font-bold py-2 px-3 menuItem" href="/">
-            home
-          </Link>
-          {/* about me */}
-          <Link
-            className="text-xl font-bold py-2 px-3 menuItem"
-            href="/aboutme"
-          >
-            about me
-          </Link>
-          {/* menu */}
-          {disciplines &&
-            disciplines.map(({ slug, title, _id }) => (
-              <Link
-                key={_id}
-                className="text-xl py-2 px-1 menuItem"
-                href={`/discipline/${slug}`}
-              >
-                {title}
+      <Popover.Panel
+        className="
+      absolute 
+      z-10 
+      p-4
+      sm:top-0 
+      sm:ml-16 
+      sm:w-56 
+      w-full 
+      sm:h-full 
+      h-screen 
+      font-redhatmono 
+      outline-none 
+      bg-black 
+      dark:bg-white"
+      >
+        <div className="flex flex-col h-full ml-2 sm:ml-0 sm:p-0 overflow-hidden">
+          <div className="flex flex-col h-full overflow-x-auto scrollbar-hide overscroll-contain">
+            <div className="flex flex-col justify-start sm:mt-10">
+              {/* home */}
+              <Link className="text-xl font-bold p-2 menuItem" href="/">
+                home
               </Link>
-            ))}
-          {/* years */}
-          <div className="pl-5 pr-8 flex flex-nowrap mt-8">
-            <div className="flex overflow-y-auto scrollbar-hide overscroll-contain">
-              {years &&
-                years.map(({ slug, title, _id }) => (
+              {/* about me */}
+              <Link className="text-xl font-bold p-2 menuItem" href="/aboutme">
+                about me
+              </Link>
+              {/* menu */}
+              {disciplines &&
+                disciplines.map(({ slug, title, _id }) => (
                   <Link
                     key={_id}
-                    className="text-lg px-2 menuItem"
-                    href={`/year/${slug}`}
+                    className="text-xl py-2 px-1 menuItem"
+                    href={`/discipline/${slug}`}
                   >
                     {title}
                   </Link>
                 ))}
+              {/* years */}
+              <div className="flex flex-nowrap mt-14 sm:mt-8 sm:pl-3 sm:pr-8">
+                <div className="flex overflow-y-auto scrollbar-hide overscroll-contain">
+                  {years &&
+                    years.map(({ slug, title, _id }) => (
+                      <Link
+                        key={_id}
+                        className="text-lg font-medium px-2 menuItem"
+                        href={`/year/${slug}`}
+                      >
+                        {title}
+                      </Link>
+                    ))}
+                </div>
+              </div>
             </div>
-          </div>
-          {/* socials */}
-          <div className="relative flex justify-evenly mt-auto">
-            <Link className="p-2 menuItem" href="https://vimeo.com/vjket">
-              <BsVimeo />
-            </Link>
-            <Link
-              className="p-2 menuItem"
-              href="https://www.facebook.com/VJkET"
-            >
-              <BsFacebook />
-            </Link>
+            {/* socials */}
+            <div className="relative flex justify-evenly mt-auto">
+              <Link className="p-2 menuItem" href="https://vimeo.com/vjket">
+                <BsVimeo />
+              </Link>
+              <Link
+                className="p-2 menuItem"
+                href="https://www.facebook.com/VJkET"
+              >
+                <BsFacebook />
+              </Link>
 
-            <Link className="p-2 menuItem" href="https://soundcloud.com/vjket">
-              <ImSoundcloud />
-            </Link>
+              <Link
+                className="p-2 menuItem"
+                href="https://soundcloud.com/vjket"
+              >
+                <ImSoundcloud />
+              </Link>
+            </div>
           </div>
         </div>
       </Popover.Panel>

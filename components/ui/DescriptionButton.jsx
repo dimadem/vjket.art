@@ -1,15 +1,13 @@
 import { BsCaretDownFill } from "react-icons/bs";
 import { Disclosure } from "@headlessui/react";
-import { useState } from "react";
 
 export default function ShowDescriptionButton() {
-  // const [open, setOpen] = useState(false);
   return (
-    <Disclosure.Button
-      // onClick={() => setOpen(!open)}
-      className="h-fit w-fit self-center ml-auto ui-open:rotate-180 ui-open:transform"
-    >
-      {<BsCaretDownFill size={20} />}
+    // <Disclosure.Button className="w-fit h-fit ui-open:rotate-180 ui-open:transform">
+    //   show more {<BsCaretDownFill size={20} />}
+    // </Disclosure.Button>
+    <Disclosure.Button className="w-fit h-fit opacity-60 ui-open:line-through ui-open:opacity-100 select-none">
+      show more
     </Disclosure.Button>
   );
 }

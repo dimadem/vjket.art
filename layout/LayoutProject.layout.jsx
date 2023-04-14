@@ -1,4 +1,4 @@
-import SideBar from "../components/SideBar.component";
+import SideBar from "../components/Sidebar.component";
 import { useEffect, useState } from "react";
 import { useResize } from "../hooks/useResize.hook";
 
@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
   return (
     <>
       {resize.width > 640 ? (
-        <div className="flex flex-row">
+        <div className="flex flex-row h-screen">
           <SideBar />
           {children}
         </div>
