@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useResize } from "../../hooks/useResize.hook";
 import { Disclosure } from "@headlessui/react";
 import ShowDescriptionButton from "../ui/DescriptionButton";
@@ -20,7 +20,10 @@ export default function Project({
   credits /* OBJECT */,
   gallery /* CAROUSEL IMAGES */,
 }) {
-  const [resize, setResize] = useState({ width: undefined, height: undefined });
+  const [resize, setResize] = useState({ width: Number, height: Number });
+  useEffect(() => {
+    setResize({ width: window.innerWidth, height: window.innerHeight });
+  }, []);
   useResize(setResize);
 
   if (!Project) return <div />;
