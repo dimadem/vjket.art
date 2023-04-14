@@ -11,25 +11,25 @@ export default function SideBar() {
   }, []);
   useResize(setResize);
 
-  return (
-    <>
-      {resize.width > 640 ? (
-        <div className="flex flex-col justify-between md:flex-none basis-16 bg-black dark:bg-white">
-          <MainMenu />
-          <div>
-            <PlaySoundButton />
-            <SetThemeButton />
-          </div>
+  if (resize.width > 640) {
+    return (
+      <div className="flex flex-col justify-between md:flex-none basis-16 bg-black dark:bg-white">
+        <MainMenu />
+        <div>
+          <PlaySoundButton />
+          <SetThemeButton />
         </div>
-      ) : (
-        <div className="flex justify-between md:flex-none basis-16 bg-black dark:bg-white">
-          <MainMenu />
-          <div className="flex">
-            <PlaySoundButton />
-            <SetThemeButton />
-          </div>
+      </div>
+    );
+  } else {
+    return (
+      <div className="flex justify-between md:flex-none basis-16 bg-black dark:bg-white">
+        <MainMenu />
+        <div className="flex">
+          <PlaySoundButton />
+          <SetThemeButton />
         </div>
-      )}
-    </>
-  );
+      </div>
+    );
+  }
 }
