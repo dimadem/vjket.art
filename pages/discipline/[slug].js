@@ -42,6 +42,8 @@ export async function getStaticProps({ params: { slug } }) {
       location,
       "technologies": technologies[]->{title},
       description,
+      soundcloud,
+      vimeo,
       credits,
       gallery
     } | order(date desc)
@@ -56,6 +58,7 @@ export async function getStaticProps({ params: { slug } }) {
 
 function ProjectsPage({ projects }) {
   const disciplineData = projects && projects[0]?.disciplines[0]?.title;
+  console.log("projects", projects);
 
   return (
     <>
@@ -71,6 +74,8 @@ function ProjectsPage({ projects }) {
               date /* YYYY-MM-DD */,
               location /* string */,
               technologies /* OBJECT */,
+              soundcloud /* URL */,
+              vimeo /* URL */,
               description /* OBJECT */,
               credits /* OBJECT */,
               gallery /* GALLERY IMAGES */,
@@ -85,6 +90,8 @@ function ProjectsPage({ projects }) {
                   date={date}
                   location={location}
                   technologies={technologies[0].title}
+                  soundcloud={soundcloud}
+                  vimeo={vimeo}
                   description={description}
                   credits={credits}
                   gallery={gallery}

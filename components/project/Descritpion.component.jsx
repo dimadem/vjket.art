@@ -1,31 +1,30 @@
 import { PortableText } from "@portabletext/react";
-import { useImageProps } from "next-sanity-image";
 import Vimeo from "@u-wave/react-vimeo";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import ReactPlayer from "react-player";
 import Image from "next/image";
+import { useImageProps } from "../../lib/next-sanity-image";
+import { useState, useEffect } from "react";
+import { useResize } from "../../hooks/useResize.hook";
 
 export default function DescritpionComponent({
+  vimeo,
+  soundcloud,
+  gallery,
   description,
   credits,
-  gallery,
 }) {
-  //! IMAGE COMPONENT
-  const ImageComponent = (description) => {
-    return (
-      <div className="w-1/2 justify-center py-2 px-1">
-        <Image
-          {...useImageProps(description.value)}
-          style={{ width: "100%", height: "auto" }}
-          alt="Project Image"
-        />
-      </div>
-    );
-  };
+  const [resize, setResize] = useState({ width: Number, height: Number });
+  useEffect(() => {
+    setResize({ width: window.innerWidth, height: window.innerHeight });
+  }, []);
+  useResize(setResize);
 
   //! GALLERY Component
   const GalleryProps = (image) => useImageProps(image);
+
+  // todo delete this shit
   const [sliderRef] = useKeenSlider(
     {
       loop: true,
@@ -38,44 +37,11 @@ export default function DescritpionComponent({
     []
   );
 
-  //! VIMEO COMPONENT
-  const VimeoComponent = (description) => {
-    return (
-      <Vimeo
-        className="aspect-video p-2"
-        responsive={true}
-        id={description.value._key}
-        video={description.value.url}
-      />
-    );
-  };
-
-  //! SOUNDCLOUD COMPONENT
-  const SoundcloudComponent = (description) => {
-    return (
-      <ReactPlayer
-        className="mt-4 grayscale"
-        width="100%"
-        height="30%"
-        key={description.value._key}
-        url={description.value.url}
-      />
-    );
-  };
-
-  //! MAIN PART
+  //! MAIN Text
   const mainDescription = {
-    types: {
-      image: ImageComponent,
-      vimeo: VimeoComponent,
-      soundcloud: SoundcloudComponent,
-      // Any other custom types you have in your content
-      // Examples: mapLocation, contactForm, code, featuredProjects, latestNews, etc.
-    },
-    //! text component
     block: {
       normal: ({ children }) => (
-        <p className="text-justify pt-1 h-full">{children}</p>
+        <p className="text-justify pt-1 h-fit">{children}</p>
       ),
       h1: ({ children }) => <h1 className="text-2xl">{children}</h1>,
       h2: ({ children }) => <h2 className="text-xl">{children}</h2>,
@@ -91,17 +57,12 @@ export default function DescritpionComponent({
     },
   };
 
-  //! CREDITS PART
+  //! CREDITS Text
   const creditsDescription = {
-    types: {
-      image: ImageComponent,
-      vimeo: VimeoComponent,
-      // Any other custom types you have in your content
-      // Examples: mapLocation, contactForm, code, featuredProjects, latestNews, etc.
-    },
-    //! text component
     block: {
-      normal: ({ children }) => <p className="text-left pt-1">{children}</p>,
+      normal: ({ children }) => (
+        <p className="text-left pt-1 h-fit font-extralight">{children}</p>
+      ),
       h1: ({ children }) => <h1 className="text-2xl">{children}</h1>,
       h2: ({ children }) => <h2 className="text-xl">{children}</h2>,
     },
@@ -117,24 +78,80 @@ export default function DescritpionComponent({
   };
 
   return (
-    <>
-      <PortableText value={description} components={mainDescription} />
+    <div className="flex flex-col mt-6">
+      {/* vimeo video */}
+      {resize.width > 640 ? (
+        <div className="flex justify-between gap-2 p-2">
+          {vimeo && (
+            <Vimeo
+              width="auto"
+              height="auto"
+              className="w-2/3 aspect-video"
+              responsive={true}
+              id={vimeo.url.split("/").pop()}
+              video={vimeo.url}
+            />
+          )}
+          {/* soundcloud audio */}
+          {soundcloud && (
+            <ReactPlayer
+              className="w-auto grayscale"
+              width="auto"
+              height="auto"
+              id={soundcloud.url}
+              url={soundcloud.url}
+            />
+          )}
+        </div>
+      ) : (
+        <div className="flex flex-col gap-2">
+          {vimeo && (
+            <Vimeo
+              className="w-full aspect-video"
+              responsive={true}
+              id={vimeo.url.split("/").pop()}
+              video={vimeo.url}
+            />
+          )}
+          {/* soundcloud audio */}
+          {soundcloud && (
+            <ReactPlayer
+              className="w-full grayscale"
+              width="100%"
+              height="auto"
+              id={soundcloud.url}
+              url={soundcloud.url}
+            />
+          )}
+        </div>
+      )}
+      {description && (
+        <div className="p-2 text-start">
+          <h1 className="font-semibold">Description:</h1>
+          <PortableText value={description} components={mainDescription} />
+        </div>
+      )}
       {/* credits */}
-      <PortableText value={credits} components={creditsDescription} />
+      {credits && (
+        <div className="p-2 text-start">
+          <h1 className="font-semibold">Credits:</h1>
+          <PortableText value={credits} components={creditsDescription} />
+        </div>
+      )}
       {/* image gallery */}
       <div ref={sliderRef} className="keen-slider pt-4">
         {gallery &&
-          gallery?.images?.map((image, key) => {
+          gallery?.images?.map((url, key) => {
             return (
               <Image
                 key={key}
-                {...GalleryProps(image)}
+                {...GalleryProps(url)}
                 alt="Gallery Image"
                 className="keen-slider__slide"
               />
             );
           })}
       </div>
-    </>
+    </div>
   );
 }

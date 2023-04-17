@@ -16,9 +16,11 @@ export default function Project({
   date /* YYYY-MM-DD */,
   location /* string */,
   technologies /* OBJECT */,
+  soundcloud /* URL */,
+  vimeo /* URL */,
+  gallery /* CAROUSEL IMAGES */,
   description /* OBJECT */,
   credits /* OBJECT */,
-  gallery /* CAROUSEL IMAGES */,
 }) {
   const [resize, setResize] = useState({ width: Number, height: Number });
   useEffect(() => {
@@ -45,9 +47,11 @@ export default function Project({
           <ShowDescriptionButton />
           <Disclosure.Panel className="bg-neutralWhite dark:bg-neutralBlack">
             <DescritpionComponent
+              soundcloud={soundcloud}
+              vimeo={vimeo}
+              gallery={gallery}
               description={description}
               credits={credits}
-              gallery={gallery}
             />
           </Disclosure.Panel>
         </Disclosure>
