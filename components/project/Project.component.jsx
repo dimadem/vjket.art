@@ -39,7 +39,7 @@ export default function Project({
           technologies={technologies}
         />
       </div>
-      <div className="container text-end h-fit w-full">
+      <div className="text-end h-fit">
         {/* project description */}
         <Disclosure>
           <ShowDescriptionButton />

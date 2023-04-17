@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useResize } from "../hooks/useResize.hook";
 import SideBar from "../components/Sidebar.component";
+import ScrollTopButton from "../components/ui/ScrollTopButton";
 
 const Layout = ({ children }) => {
   const [resize, setResize] = useState({ width: Number, height: Number });
@@ -11,16 +12,17 @@ const Layout = ({ children }) => {
 
   if (resize.width >= 640) {
     return (
-      <div className="flex flex-row w-full h-screen">
+      <div className="flex flex-row select-none">
         <SideBar />
         {children}
       </div>
     );
   } else {
     return (
-      <div className="relative flex flex-col w-full h-screen md:hidden">
+      <div className="flex flex-col select-none">
         <SideBar />
         {children}
+        <ScrollTopButton />
       </div>
     );
   }

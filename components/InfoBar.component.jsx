@@ -10,17 +10,18 @@ export default function InfoBar({ discipline, year }) {
 
   return (
     <>
-      {resize.width > 640 ? (
+      {resize.width > 1024 ? (
         <div
           className="
           select-none
-    flex 
-    flex-col 
-    h-screen 
-    justify-evenly 
-    items-center 
-    w-1/5 
-    bg-white dark:bg-black dark:text-neutralWhite"
+          flex
+          flex-col
+          h-screen
+          justify-evenly
+          items-center
+          w-1/12
+          lg:w-1/6
+        bg-white dark:bg-black dark:text-neutralWhite"
         >
           {discipline &&
             discipline.split("").map((letter, key) => {

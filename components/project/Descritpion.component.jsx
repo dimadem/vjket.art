@@ -11,7 +11,7 @@ export default function DescritpionComponent({
   credits,
   gallery,
 }) {
-  //! components for description and credits
+  //! IMAGE COMPONENT
   const ImageComponent = (description) => {
     return (
       <div className="w-1/2 justify-center py-2 px-1">
@@ -24,16 +24,33 @@ export default function DescritpionComponent({
     );
   };
 
+  //! GALLERY Component
+  const GalleryProps = (image) => useImageProps(image);
+  const [sliderRef] = useKeenSlider(
+    {
+      loop: true,
+      slides: {
+        origin: "center",
+        perView: 3,
+        spacing: 10,
+      },
+    },
+    []
+  );
+
+  //! VIMEO COMPONENT
   const VimeoComponent = (description) => {
     return (
       <Vimeo
-        className="float-left pr-5"
+        className="aspect-video p-2"
+        responsive={true}
         id={description.value._key}
         video={description.value.url}
-        width="500%"
       />
     );
   };
+
+  //! SOUNDCLOUD COMPONENT
   const SoundcloudComponent = (description) => {
     return (
       <ReactPlayer
@@ -46,7 +63,8 @@ export default function DescritpionComponent({
     );
   };
 
-  const componentsDescription = {
+  //! MAIN PART
+  const mainDescription = {
     types: {
       image: ImageComponent,
       vimeo: VimeoComponent,
@@ -54,6 +72,7 @@ export default function DescritpionComponent({
       // Any other custom types you have in your content
       // Examples: mapLocation, contactForm, code, featuredProjects, latestNews, etc.
     },
+    //! text component
     block: {
       normal: ({ children }) => (
         <p className="text-justify pt-1 h-full">{children}</p>
@@ -72,13 +91,15 @@ export default function DescritpionComponent({
     },
   };
 
-  const componentsCredits = {
+  //! CREDITS PART
+  const creditsDescription = {
     types: {
       image: ImageComponent,
       vimeo: VimeoComponent,
       // Any other custom types you have in your content
       // Examples: mapLocation, contactForm, code, featuredProjects, latestNews, etc.
     },
+    //! text component
     block: {
       normal: ({ children }) => <p className="text-left pt-1">{children}</p>,
       h1: ({ children }) => <h1 className="text-2xl">{children}</h1>,
@@ -95,25 +116,11 @@ export default function DescritpionComponent({
     },
   };
 
-  // ImgGallery
-  const GalleryProps = (image) => useImageProps(image);
-  const [sliderRef] = useKeenSlider(
-    {
-      loop: true,
-      slides: {
-        origin: "center",
-        perView: 3,
-        spacing: 10,
-      },
-    },
-    []
-  );
-
   return (
     <>
-      <PortableText value={description} components={componentsDescription} />
+      <PortableText value={description} components={mainDescription} />
       {/* credits */}
-      <PortableText value={credits} components={componentsCredits} />
+      <PortableText value={credits} components={creditsDescription} />
       {/* image gallery */}
       <div ref={sliderRef} className="keen-slider pt-4">
         {gallery &&

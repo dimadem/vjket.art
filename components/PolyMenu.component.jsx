@@ -23,6 +23,7 @@ export default function PolyMenu() {
   }, [theme]);
 
   return (
+    // <div className="flex flex-col h-screen w-screen">
     <Canvas
       gl={{ antialias: false }}
       style={{ height: "100vh", width: "100%" }}
@@ -56,5 +57,6 @@ export default function PolyMenu() {
         <Vignette offset={0.1} darkness={0.6} />
       </EffectComposer>
     </Canvas>
+    // </div>
   );
 }

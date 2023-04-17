@@ -86,14 +86,13 @@ video {
   .projectCard {
     @apply container 
     justify-start 
-    w-[350px]
-    p-4 
+    /* w-[350px] */
+    p-4
     my-4
     mx-20
     md:w-[900px] 
     md:p-8 
     border-b-2 border-neutralBlack rounded-sm
-    /* sm:w-full ??? */
     shadow-inner
   bg-neutralWhite dark:bg-neutralBlack;
   }
