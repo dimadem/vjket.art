@@ -58,7 +58,6 @@ export async function getStaticProps({ params: { slug } }) {
 
 function ProjectsPage({ projects }) {
   const disciplineData = projects && projects[0]?.disciplines[0]?.title;
-  console.log("projects", projects);
 
   return (
     <>

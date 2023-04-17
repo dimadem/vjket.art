@@ -68,6 +68,9 @@ function ProjectsPage({ projects }) {
             location /* string */,
             technologies /* OBJECT */,
             description /* OBJECT */,
+            soundcloud,
+            vimeo,
+            gallery,
             credits /* OBJECT */,
           }) => {
             return (
@@ -80,8 +83,11 @@ function ProjectsPage({ projects }) {
                 date={date}
                 location={location}
                 technologies={technologies[0].title}
+                soundcloud={soundcloud}
+                vimeo={vimeo}
                 description={description}
                 credits={credits}
+                gallery={gallery}
               />
             );
           }

@@ -44,7 +44,7 @@ export default function Project({
       <div className="text-end h-fit">
         {/* project description */}
         <Disclosure>
-          <ShowDescriptionButton />
+          <ShowDescriptionButton slug={slug} />
           <Disclosure.Panel className="bg-neutralWhite dark:bg-neutralBlack">
             <DescritpionComponent
               soundcloud={soundcloud}
