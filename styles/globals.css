@@ -54,7 +54,7 @@ video {
   }
 
   .sidebar-tooltip {
-    @apply invisible sm:visible select-none absolute
+    @apply invisible select-none absolute
     w-fit
     h-fit
     p-2 
@@ -76,12 +76,12 @@ video {
   .menuItem {
     @apply cursor-default 
     select-none 
-    ui-not-active:text-neutralWhite
-    ui-not-active:dark:text-neutralBlack
-    ui-active:bg-white
-    ui-active:text-neutralBlack
-    ui-active:dark:bg-black
-    ui-active:dark:text-neutralWhite;
+text-neutralWhite
+dark:text-neutralBlack
+hover:bg-white
+hover:text-neutralBlack
+hover:dark:bg-black
+hover:dark:text-neutralWhite;
   }
   .projectCard {
     @apply container 

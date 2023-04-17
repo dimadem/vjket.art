@@ -37,58 +37,75 @@ export default function MainMenu() {
           <div className="flex flex-col h-full overflow-x-auto scrollbar-hide overscroll-contain">
             <div className="flex flex-col justify-start sm:mt-10">
               {/* home */}
-              <Link className="text-xl font-bold p-2 menuItem" href="/">
+              <Popover.Button
+                as={Link}
+                href="/"
+                className="text-xl font-bold p-2 menuItem"
+              >
                 home
-              </Link>
+              </Popover.Button>
               {/* about me */}
-              <Link className="text-xl font-bold p-2 menuItem" href="/aboutme">
+              <Popover.Button
+                as={Link}
+                href="/aboutme"
+                className="text-xl font-bold p-2 menuItem"
+              >
                 about me
-              </Link>
+              </Popover.Button>
               {/* menu */}
               {disciplines &&
                 disciplines.map(({ slug, title, _id }) => (
-                  <Link
+                  <Popover.Button
                     key={_id}
-                    className="text-xl py-2 px-1 menuItem"
+                    as={Link}
                     href={`/discipline/${slug}`}
+                    className="text-xl py-2 px-1 menuItem"
                   >
                     {title}
-                  </Link>
+                  </Popover.Button>
                 ))}
               {/* years */}
               <div className="flex flex-nowrap mt-14 sm:mt-8 sm:pl-3 sm:pr-8">
                 <div className="flex overflow-y-auto scrollbar-hide overscroll-contain">
                   {years &&
                     years.map(({ slug, title, _id }) => (
-                      <Link
+                      <Popover.Button
+                        as={Link}
                         key={_id}
                         className="text-lg font-medium px-2 menuItem"
                         href={`/year/${slug}`}
                       >
                         {title}
-                      </Link>
+                      </Popover.Button>
                     ))}
                 </div>
               </div>
             </div>
             {/* socials */}
             <div className="relative flex justify-evenly mt-auto">
-              <Link className="p-2 menuItem" href="https://vimeo.com/vjket">
+              <Popover.Button
+                as={Link}
+                className="p-2 menuItem"
+                href="https://vimeo.com/vjket"
+              >
                 <BsVimeo />
-              </Link>
-              <Link
+              </Popover.Button>
+
+              <Popover.Button
+                as={Link}
                 className="p-2 menuItem"
                 href="https://www.facebook.com/VJkET"
               >
                 <BsFacebook />
-              </Link>
+              </Popover.Button>
 
-              <Link
+              <Popover.Button
+                as={Link}
                 className="p-2 menuItem"
                 href="https://soundcloud.com/vjket"
               >
                 <ImSoundcloud />
-              </Link>
+              </Popover.Button>
             </div>
           </div>
         </div>

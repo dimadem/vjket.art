@@ -3,6 +3,7 @@ import { groq } from "next-sanity";
 import Project from "../../components/project/Project.component";
 import CenterFrame from "../../layout/CenterFrame.layout";
 import { withLayoutProject } from "../../layout/LayoutProject.layout";
+import { PreviewSuspense } from "next-sanity/preview";
 
 export async function getStaticPaths() {
   const projectQuery = groq`*[_type=="project"]{"slug": slug.current}`;
@@ -28,7 +29,7 @@ export async function getStaticProps({ params: { slug } }) {
   const years = await client.fetch(yearsGroq);
 
   // fetch projects
-  const projectQuery = groq`*[_type=="project" && slug.current =="${slug}"]{
+  const projectsQuery = groq`*[_type=="project" && slug.current =="${slug}"]{
     _id,
     title,
     credits,
@@ -43,18 +44,18 @@ export async function getStaticProps({ params: { slug } }) {
     "slug": slug.current,
     "technologies": technologies[]->{title},
     }`;
-  const data = await client.fetch(projectQuery);
-  const project = await data[0];
+  const data = await client.fetch(projectsQuery);
+
+  const projects = await data[0];
 
   return {
-    props: { project, disciplines, years },
+    props: { projects, disciplines, years },
   };
 }
 
 function ProjectsPage({
-  project: {
+  projects: {
     _id,
-    disciplines,
     title,
     slug,
     mainImage,
@@ -66,28 +67,27 @@ function ProjectsPage({
     description,
     credits,
     gallery,
+    disciplines,
   },
 }) {
   return (
-    <>
-      <CenterFrame>
-        <Project
-          key={_id}
-          disciplines={disciplines[0].title}
-          title={title}
-          slug={slug}
-          mainImage={mainImage}
-          date={date}
-          location={location}
-          technologies={technologies[0].title}
-          soundcloud={soundcloud}
-          vimeo={vimeo}
-          description={description}
-          credits={credits}
-          gallery={gallery}
-        />
-      </CenterFrame>
-    </>
+    <CenterFrame>
+      <Project
+        key={_id}
+        disciplines={disciplines[0].title}
+        title={title}
+        slug={slug}
+        mainImage={mainImage}
+        date={date}
+        location={location}
+        technologies={technologies[0].title}
+        soundcloud={soundcloud}
+        vimeo={vimeo}
+        description={description}
+        credits={credits}
+        gallery={gallery}
+      />
+    </CenterFrame>
   );
 }
 export default withLayoutProject(ProjectsPage);

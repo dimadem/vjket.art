@@ -11,8 +11,6 @@ export async function getStaticProps() {
   const years = await client.fetch(
     groq`*[_type == "year"]{title, "slug": slug.current, _id} | order(title desc)`
   );
-  //testing
-  // console.log(disciplines, years);
 
   return {
     props: {
