@@ -1,12 +1,10 @@
 import { PortableText } from "@portabletext/react";
 import Vimeo from "@u-wave/react-vimeo";
 import "keen-slider/keen-slider.min.css";
-import { useKeenSlider } from "keen-slider/react";
 import ReactPlayer from "react-player";
-import Image from "next/image";
-import { useImageProps } from "../../lib/next-sanity-image";
 import { useState, useEffect } from "react";
 import { useResize } from "../../hooks/useResize.hook";
+import Gallery from "./Gallery.component";
 
 export default function DescritpionComponent({
   vimeo,
@@ -20,22 +18,6 @@ export default function DescritpionComponent({
     setResize({ width: window.innerWidth, height: window.innerHeight });
   }, []);
   useResize(setResize);
-
-  //! GALLERY Component
-  const GalleryProps = (image) => useImageProps(image);
-
-  // todo delete this shit
-  const [sliderRef] = useKeenSlider(
-    {
-      loop: true,
-      slides: {
-        origin: "center",
-        perView: 3,
-        spacing: 10,
-      },
-    },
-    []
-  );
 
   //! MAIN Text
   const mainDescription = {
@@ -80,78 +62,46 @@ export default function DescritpionComponent({
   return (
     <div className="flex flex-col mt-6">
       {/* vimeo video */}
-      {resize.width > 640 ? (
-        <div className="flex justify-between gap-2 p-2">
-          {vimeo && (
-            <Vimeo
-              width="auto"
-              height="auto"
-              className="w-2/3 aspect-video"
-              responsive={true}
-              id={vimeo.url.split("/").pop()}
-              video={vimeo.url}
-            />
-          )}
-          {/* soundcloud audio */}
-          {soundcloud && (
-            <ReactPlayer
-              className="w-auto grayscale"
-              width="auto"
-              height="auto"
-              id={soundcloud.url}
-              url={soundcloud.url}
-            />
-          )}
-        </div>
-      ) : (
-        <div className="flex flex-col gap-2">
-          {vimeo && (
-            <Vimeo
-              className="w-full aspect-video"
-              responsive={true}
-              id={vimeo.url.split("/").pop()}
-              video={vimeo.url}
-            />
-          )}
-          {/* soundcloud audio */}
-          {soundcloud && (
-            <ReactPlayer
-              className="w-full grayscale"
-              width="100%"
-              height="auto"
-              id={soundcloud.url}
-              url={soundcloud.url}
-            />
-          )}
-        </div>
-      )}
+      <div className="flex flex-col gap-2 md:gap-12 p-2">
+        {vimeo && (
+          <Vimeo
+            className="w-full aspect-video"
+            responsive={true}
+            id={vimeo.url.split("/").pop()}
+            video={vimeo.url}
+          />
+        )}
+        {/* soundcloud audio */}
+        {soundcloud && (
+          <ReactPlayer
+            className="w-full grayscale"
+            width="auto"
+            height="auto"
+            id={soundcloud.url}
+            url={soundcloud.url}
+          />
+        )}
+      </div>
       {description && (
-        <div className="p-2 text-start">
-          <h1 className="font-semibold">Description:</h1>
+        <div className="p-2 text-start mt-2 sm:mt-5">
+          <h1 className="font-semibold mb-2 sm:mb-5">Description:</h1>
           <PortableText value={description} components={mainDescription} />
         </div>
       )}
       {/* credits */}
       {credits && (
-        <div className="p-2 text-start">
-          <h1 className="font-semibold">Credits:</h1>
+        <div className="p-2 text-start mt-2 sm:mt-5">
+          <h1 className="font-semibold mb-2 sm:mb-5">Credits:</h1>
           <PortableText value={credits} components={creditsDescription} />
         </div>
       )}
       {/* image gallery */}
-      <div ref={sliderRef} className="keen-slider pt-4">
-        {gallery &&
-          gallery?.images?.map((url, key) => {
-            return (
-              <Image
-                key={key}
-                {...GalleryProps(url)}
-                alt="Gallery Image"
-                className="keen-slider__slide"
-              />
-            );
-          })}
-      </div>
+      {gallery && (
+        <div className="p-2 text-start mt-2 sm:mt-5">
+          <h1 className="font-semibold mb-2 sm:mb-5">Gallery:</h1>
+          <Gallery gallery={gallery} />
+        </div>
+      )}
     </div>
   );
 }

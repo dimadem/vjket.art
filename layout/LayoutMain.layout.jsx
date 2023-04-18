@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useResize } from "../hooks/useResize.hook";
 import SideBar from "../components/Sidebar.component";
-import ScrollTopButton from "../components/ui/ScrollTopButton";
 
 const Layout = ({ children }) => {
   const [resize, setResize] = useState({ width: Number, height: Number });
@@ -22,7 +21,6 @@ const Layout = ({ children }) => {
       <div className="flex flex-col select-none">
         <SideBar />
         {children}
-        <ScrollTopButton />
       </div>
     );
   }

@@ -33,6 +33,7 @@ function aboutme() {
             type="video/mp4"
           />
           <video
+            // className="hidden"
             muted
             preload="auto"
             autoPlay
