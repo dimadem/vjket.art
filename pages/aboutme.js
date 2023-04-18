@@ -3,49 +3,79 @@ import { withLayoutMain } from "../layout/LayoutMain.layout";
 import { client } from "../lib/sanity.server";
 import { groq } from "next-sanity";
 import { TypeAnimation } from "react-type-animation";
-//todo
-//1 -- text animation fix on different screens
-//2 -- adapt to mobile portrait & landscape
+import { useEffect, useState } from "react";
+import { useResize } from "../hooks/useResize.hook";
 
-function aboutme() {
+function AboutMe() {
+  const [resize, setResize] = useState({ width: Number, height: Number });
+  useEffect(() => {
+    setResize({ width: window.innerWidth, height: window.innerHeight });
+  }, []);
+  useResize(setResize);
+
   // speed cursor
   const cursorSpeed = 70;
+
   return (
     <CenterFrame>
-      <div className="page flex flex-col font-redhatmono dark:text-white">
-        {/* Artist Name */}
-        <div className="flex flex-row justify-around">
-          <h1 className="w-1/2 font-normal text-5xl text-center">
-            KATERYNA PITS
-          </h1>
-          <h1 className="w-1/2 font-normal text-5xl text-center">VJkET</h1>
-        </div>
-        {/* Kate portraits */}
-        <div className="flex flex-row py-16 h-fit justify-around">
-          <video
-            muted
-            preload="auto"
-            autoPlay
-            width="450"
-            height="450"
-            loop
-            src="./media/avatar/selfie.mp4"
-            type="video/mp4"
-          />
-          <video
-            // className="hidden"
-            muted
-            preload="auto"
-            autoPlay
-            width="450"
-            height="450"
-            loop
-            src="./media/avatar/polygon.mp4"
-            type="video/mp4"
-          />
-        </div>
+      <div className="flex flex-col p-4 h-fit font-redhatmono dark:text-white ">
+        {resize.width > 640 ? (
+          <>
+            {/* Artist Name */}
+            <div className="flex flex-row justify-around my-4 w-full">
+              <h1 className="w-1/2 font-normal text-5xl text-center">
+                KATERYNA PITS
+              </h1>
+              <h1 className="w-1/2 font-normal text-5xl text-center">VJkET</h1>
+            </div>
+            {/* Kate portraits */}
+            <div className="flex flex-row py-16 h-fit justify-around">
+              <video
+                muted
+                className="aspect-square w-1/2 md:w-1/3"
+                preload="auto"
+                autoPlay
+                loop
+                src="./media/avatar/selfie.mp4"
+                type="video/mp4"
+              />
+              <video
+                muted
+                className="aspect-square w-1/2 md:w-1/3"
+                preload="auto"
+                autoPlay
+                loop
+                src="./media/avatar/polygon.mp4"
+                type="video/mp4"
+              />
+            </div>
+          </>
+        ) : (
+          <>
+            {/* Artist Name */}
+            <div className="flex flex-col justify-center items-center space-y-3">
+              <h1 className="w-full font-normal text-5xl text-center">VJkET</h1>
+              <h2 className="w-full font-normal text-3xl text-center">
+                KATERYNA PITS
+              </h2>
+            </div>
+            {/* Kate portraits */}
+            <div className="flex flex-row mt-6 h-fit justify-around">
+              <video
+                muted
+                preload="auto"
+                autoPlay
+                width="450"
+                height="450"
+                loop
+                src="./media/avatar/selfie.mp4"
+                type="video/mp4"
+              />
+            </div>
+          </>
+        )}
         {/* Artist Bio */}
-        <div className="font-thin text-2xl py-7">
+        <div className="font-thin text-2xl mt-7">
           <TypeAnimation
             sequence={[
               `New media artist and researcher in the field of digital-mechanic art and human-computer interaction. 
@@ -58,7 +88,6 @@ function aboutme() {
             className={"text-justify"}
           />
           <p>
-            <br />
             <br />
           </p>
           <TypeAnimation
@@ -91,7 +120,6 @@ function aboutme() {
           />
           <p>
             <br />
-            <br />
           </p>
           <TypeAnimation
             sequence={[
@@ -113,7 +141,7 @@ function aboutme() {
   );
 }
 
-export default withLayoutMain(aboutme);
+export default withLayoutMain(AboutMe);
 
 //fetching data for MainMenu
 export async function getStaticProps() {
