@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useResize } from "../hooks/useResize.hook";
 import SideBar from "../components/Sidebar.component";
+import { Transition } from "@headlessui/react";
 
 const Layout = ({ children }) => {
   const [resize, setResize] = useState({ width: Number, height: Number });

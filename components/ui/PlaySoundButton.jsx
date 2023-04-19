@@ -25,7 +25,7 @@ export default function PlaySoundButton() {
             <BsFillSquareFill size="30" />
           )}
         </button>
-        <span className="sidebar-tooltip group-hover:scale-100">play</span>
+        {/* <span className="sidebar-tooltip group-hover:scale-100">play</span> */}
       </div>
     </>
   );

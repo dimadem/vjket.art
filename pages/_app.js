@@ -11,7 +11,6 @@ const redhatmono = Red_Hat_Mono({
 });
 
 function MyApp({ Component, pageProps }) {
-  // console.log("MYAPP:", pageProps);
   return (
     <>
       <style jsx global>{`

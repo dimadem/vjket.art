@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import { useResize } from "../hooks/useResize.hook";
 
 const SideBar = () => {
-  const [stop, setStop] = useState(false);
   const [resize, setResize] = useState({ width: Number, height: Number });
   useEffect(() => {
     setResize({ width: window.innerWidth, height: window.innerHeight });
@@ -24,7 +23,7 @@ const SideBar = () => {
     );
   } else {
     return (
-      <div className="flex justify-between md:flex-none basis-16 bg-black dark:bg-white">
+      <div className="flex justify-between basis-16 bg-black dark:bg-white">
         <MainMenu />
         <div className="flex">
           <PlaySoundButton />

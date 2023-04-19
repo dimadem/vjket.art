@@ -14,7 +14,7 @@ export default function SetThemeButton() {
       >
         {<BsApp size="30" />}
       </button>
-      <span className="sidebar-tooltip group-hover:scale-100">theme</span>
+      {/* <span className="sidebar-tooltip group-hover:scale-100">theme</span> */}
     </div>
   );
 }

@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { useContext } from "react";
 import { MenuContext } from "../context/menu.context";
-import { Menu, Popover } from "@headlessui/react";
-
+import { Popover } from "@headlessui/react";
+import LogoLink from "./ui/LogoLink";
 import { BsList } from "react-icons/bs";
 import { BsVimeo, BsFacebook } from "react-icons/bs";
 import { ImSoundcloud } from "react-icons/im";
@@ -106,6 +106,13 @@ export default function MainMenu() {
               >
                 <ImSoundcloud />
               </Popover.Button>
+            </div>
+            {/* logo */}
+            <div className="relative flex justify-center text-white p-2">
+              <span className="flex items-center text-end p-2 dark:invert">
+                made by
+              </span>
+              <LogoLink />
             </div>
           </div>
         </div>
