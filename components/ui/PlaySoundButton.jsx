@@ -1,5 +1,5 @@
 import useSound from "use-sound";
-import { BsFillPlayFill } from "react-icons/bs";
+import { BsFillPlayFill, BsFillSquareFill } from "react-icons/bs";
 import { useState } from "react";
 
 export default function PlaySoundButton() {
@@ -19,7 +19,11 @@ export default function PlaySoundButton() {
     <>
       <div key="bsfillplayfill" className="sidebar-icon group">
         <button onClick={useToggleButton}>
-          {<BsFillPlayFill size="40" />}
+          {!pause ? (
+            <BsFillPlayFill size="40" />
+          ) : (
+            <BsFillSquareFill size="30" />
+          )}
         </button>
         <span className="sidebar-tooltip group-hover:scale-100">play</span>
       </div>

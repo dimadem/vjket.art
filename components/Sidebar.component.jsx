@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useResize } from "../hooks/useResize.hook";
 
 const SideBar = () => {
+  const [stop, setStop] = useState(false);
   const [resize, setResize] = useState({ width: Number, height: Number });
   useEffect(() => {
     setResize({ width: window.innerWidth, height: window.innerHeight });

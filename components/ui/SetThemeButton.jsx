@@ -1,5 +1,5 @@
 import { useTheme } from "next-themes";
-import { BsFillSquareFill } from "react-icons/bs";
+import { BsApp } from "react-icons/bs";
 
 export default function SetThemeButton() {
   const { theme, setTheme } = useTheme();
@@ -12,7 +12,7 @@ export default function SetThemeButton() {
           if (theme === "dark") setTheme("light");
         }}
       >
-        {<BsFillSquareFill size="30" />}
+        {<BsApp size="30" />}
       </button>
       <span className="sidebar-tooltip group-hover:scale-100">theme</span>
     </div>
