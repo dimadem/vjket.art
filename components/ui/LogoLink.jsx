@@ -4,15 +4,9 @@ import logo from "../../public/netart_cube_logo.svg";
 
 export default function LogoLink() {
   return (
-    <div className="sidebar-icon group">
+    <div className="flex invert dark:invert-0 hover:bg-neutralWhite hover:invert-0 hover:dark:bg-neutralWhite ease-linearcursor-pointer">
       <Link href="https://www.netart.live" target="_blank">
-        <Image
-          className="dark:invert"
-          src={logo}
-          alt="netart"
-          width={40}
-          height={40}
-        />
+        <Image className="" src={logo} alt="netart" width={30} height={30} />
       </Link>
     </div>
   );

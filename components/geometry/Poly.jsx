@@ -80,6 +80,7 @@ export default function Poly() {
     <group ref={mesh} scale={1.5}>
       {/* Poly */}
       <mesh
+        ref={mesh}
         geometry={geometry}
         position={[0, 0, 0]}
         onPointerOver={() => hoverPoly(false)}

@@ -82,7 +82,7 @@ export default function MainMenu() {
               </div>
             </div>
             {/* socials */}
-            <div className="relative flex justify-evenly mt-auto">
+            <div className="relative flex justify-evenly mt-auto mb-6">
               <Popover.Button
                 as={Link}
                 className="p-2 menuItem"
@@ -108,10 +108,8 @@ export default function MainMenu() {
               </Popover.Button>
             </div>
             {/* logo */}
-            <div className="relative flex justify-center text-white p-2">
-              <span className="flex items-center text-end p-2 dark:invert">
-                made by
-              </span>
+            <div className="relative flex text-white justify-center gap-4 mb-1">
+              <span className="flex items-center dark:invert">made by</span>
               <LogoLink />
             </div>
           </div>
