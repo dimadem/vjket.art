@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useResize } from "../hooks/useResize.hook";
 
 const Layout = ({ children }) => {
-  const [resize, setResize] = useState({ width: Number, height: Number });
+  const [resize, setResize] = useState({ width: 0, height: 0 });
   useEffect(() => {
     setResize({ width: window.innerWidth, height: window.innerHeight });
   }, []);

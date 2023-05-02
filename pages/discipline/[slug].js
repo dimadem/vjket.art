@@ -58,11 +58,11 @@ export async function getStaticProps({ params: { slug } }) {
 
 function ProjectsPage({ projects }) {
   const disciplineData = projects && projects[0]?.disciplines[0]?.title;
-
+  console.log(projects);
   return (
     <>
       <CenterFrame>
-        {projects &&
+        {projects.length > 0 ? (
           projects.map(
             ({
               _id /* string */,
@@ -97,7 +97,14 @@ function ProjectsPage({ projects }) {
                 />
               );
             }
-          )}
+          )
+        ) : (
+          <div className="projectCard">
+            <span className="select-none p-2 font-normal text-2xl sm:tracking-widest truncate">
+              there no projects yet
+            </span>
+          </div>
+        )}
       </CenterFrame>
       <InfoBar discipline={disciplineData} />
     </>

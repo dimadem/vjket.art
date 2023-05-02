@@ -57,40 +57,48 @@ function ProjectsPage({ projects }) {
   return (
     <>
       <CenterFrame>
-        {projects?.map(
-          ({
-            _id /* string */,
-            title /* string */,
-            slug /* type: slug, string: slug.current */,
-            mainImage /* IMAGE */,
-            disciplines /* OBJECT  */,
-            date /* YYYY-MM-DD */,
-            location /* string */,
-            technologies /* OBJECT */,
-            description /* OBJECT */,
-            soundcloud,
-            vimeo,
-            gallery,
-            credits /* OBJECT */,
-          }) => {
-            return (
-              <Project
-                key={_id}
-                title={title}
-                slug={slug}
-                mainImage={mainImage}
-                disciplines={disciplines[0].title}
-                date={date}
-                location={location}
-                technologies={technologies[0].title}
-                soundcloud={soundcloud}
-                vimeo={vimeo}
-                description={description}
-                credits={credits}
-                gallery={gallery}
-              />
-            );
-          }
+        {projects.length > 0 ? (
+          projects.map(
+            ({
+              _id /* string */,
+              title /* string */,
+              slug /* type: slug, string: slug.current */,
+              mainImage /* IMAGE */,
+              disciplines /* OBJECT  */,
+              date /* YYYY-MM-DD */,
+              location /* string */,
+              technologies /* OBJECT */,
+              description /* OBJECT */,
+              soundcloud,
+              vimeo,
+              gallery,
+              credits /* OBJECT */,
+            }) => {
+              return (
+                <Project
+                  key={_id}
+                  title={title}
+                  slug={slug}
+                  mainImage={mainImage}
+                  disciplines={disciplines[0].title}
+                  date={date}
+                  location={location}
+                  technologies={technologies[0].title}
+                  soundcloud={soundcloud}
+                  vimeo={vimeo}
+                  description={description}
+                  credits={credits}
+                  gallery={gallery}
+                />
+              );
+            }
+          )
+        ) : (
+          <div className="projectCard">
+            <span className="select-none p-2 font-normal text-2xl sm:tracking-widest truncate">
+              there no projects yet
+            </span>
+          </div>
         )}
       </CenterFrame>
       <InfoBar year={projects && projects[0]?.date} />
