@@ -1,7 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
+
+export const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 export function useResize(setResize) {
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const handleResize = () => {
       setResize({
         width: window.innerWidth,
