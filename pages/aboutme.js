@@ -18,7 +18,7 @@ function AboutMe() {
 
   return (
     <CenterFrame>
-      <div className="flex flex-col p-4 h-fit font-redhatmono dark:text-white ">
+      <div className="flex flex-col w-full p-4 h-full font-redhatmono dark:text-white ">
         {resize.width > 640 ? (
           <>
             {/* Artist Name */}

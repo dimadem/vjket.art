@@ -3,7 +3,7 @@ import { MenuContext } from "../../context/menu.context";
 import { useTheme } from "next-themes";
 import { BufferGeometry, Vector3, DoubleSide } from "three";
 import { useFrame } from "@react-three/fiber";
-import { MeshDistortMaterial, Text3D } from "@react-three/drei";
+import { MeshDistortMaterial, Text3D, Billboard } from "@react-three/drei";
 import { useRouter } from "next/router";
 
 export default function Poly() {
